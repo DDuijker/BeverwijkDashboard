@@ -2,8 +2,9 @@ How to migrate:
 1. In the upper directory (BeverwijkDashboard) that contains the manage.py file, open the directory in a terminal:
     => open in => terminal
 2. These are the commands to run. In this order!
-    python manage.py makemigrations
+    python manage.py makemigrations (name of migration)
     python manage.py migrate
+- do this if you changed the models
 
 How to create a superuser:
 1. In the upper directory (BeverwijkDashboard) that contains the manage.py file, open the directory in a terminal:
@@ -21,3 +22,8 @@ How to view database:
 
 How to start the server:
 from the root directory, open in terminal and run 'py manage.py runserver'
+
+How to create a view:
+1. in the templates, create your HTML file
+2. in views.py add a function that returns the template
+3. in the urls.py of MaasApp, add a path with the function from views
