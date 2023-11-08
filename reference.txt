@@ -12,3 +12,12 @@ How to create a superuser:
     python manage.py createsuperuser
 3. Fill in the required fields
 
+How to list all branches:
+1. To list all branches in your Git repository, you can use the git branch command.
+    The current branch you are on will be marked with an asterisk (*).
+
+How to view database:
+1. use DB Browser for SQLite (external application)
+
+How to start the server:
+from the root directory, open in terminal and run 'py manage.py runserver'
