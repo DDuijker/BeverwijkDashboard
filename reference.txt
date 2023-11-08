@@ -1,0 +1,14 @@
+How to migrate:
+1. In the upper directory (BeverwijkDashboard) that contains the manage.py file, open the directory in a terminal:
+    => open in => terminal
+2. These are the commands to run. In this order!
+    python manage.py makemigrations
+    python manage.py migrate
+
+How to create a superuser:
+1. In the upper directory (BeverwijkDashboard) that contains the manage.py file, open the directory in a terminal:
+    => open in => terminal
+2. Run this command:
+    python manage.py createsuperuser
+3. Fill in the required fields
+
