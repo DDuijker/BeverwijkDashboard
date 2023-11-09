@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<html>
-<body>
+{% extends "master.html" %}
 
-<h1>Hello World!</h1>
-<p>Welcome to the dashboard for Beverwijk</p>
+{% block title %}
+    MaaS Dashboard
+{% endblock %}
 
-</body>
-</html>
+{% block content %}
+    <h1>Beverwijk Dashboard</h1>
+    <h3>Gebruikers</h3>
+    <p>Klik voor een overzicht van de <a href="/users">gebruikers</a></p>
+
+{% endblock  %}

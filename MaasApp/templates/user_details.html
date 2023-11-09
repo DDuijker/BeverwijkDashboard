@@ -1,0 +1,13 @@
+{% extends "master.html" %}
+
+{% block title %}
+    Gebruiker: {{ user.first_name }} {{ user.last_name }}
+{% endblock %}
+
+{% block content %}
+    <h1>Gebruiker: {{ user.first_name }} {{ user.last_name }}</h1>
+    <p>Is dev: {{ user.is_dev }}</p>
+    <p>Is active: {{ user.is_active }}</p>
+
+    <p>Back to <a href="/users">users</a></p>
+{% endblock %}

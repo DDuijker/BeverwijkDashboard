@@ -25,9 +25,10 @@ AUTH_USER_MODEL = 'MaasApp.user'
 SECRET_KEY = 'django-insecure-ok-x8)m^r_q!ocn$rvmmsl$w%_w#%3+)hg1ikx&87yrhigohkp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# In production this should be the proper domain name
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
