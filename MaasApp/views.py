@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from .models import User
+
+
 # Create your views here.
 
 
@@ -26,5 +28,13 @@ def user_details(request, request_id):
     template = loader.get_template('user_details.html')
     context = {
         'user': user
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def testing(request):
+    template = loader.get_template('template.html')
+    context = {
+        'fruits': ['Apple', 'Banana', 'Cherry'],
     }
     return HttpResponse(template.render(context, request))
