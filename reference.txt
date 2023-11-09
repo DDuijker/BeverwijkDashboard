@@ -1,38 +1,47 @@
 How to start the application:
 1. run command 'py manage.py runserver' in the root directory (that contains the manage.py file)
 
-How to migrate:
+Migrate
 1. In the root directory open the directory in a terminal:
     => open in => terminal
 2. These are the commands to run. In this order!
-    python manage.py makemigrations (name of migration)
+    python manage.py makemigrations (name of app (MaasApp))
     python manage.py migrate
 - do this if you changed the models
 
-How to query the database from the console:
+Query database Console
 1. In the root directory run 'py manage.py shell'
 2. From MaasApp.models import User
 3. User.objects.all()
 4. User.objects.all().values()
 
-How to create a superuser:
+Create Superuser
 1. In the upper directory (BeverwijkDashboard) that contains the manage.py file, open the directory in a terminal:
     => open in => terminal
 2. Run this command:
     python manage.py createsuperuser
 3. Fill in the required fields
 
-How to list all branches:
+Git Branches
 1. To list all branches in your Git repository, you can use the git branch command.
     The current branch you are on will be marked with an asterisk (*).
 
-How to view database:
+Enter database
 1. use DB Browser for SQLite (external application)
+OR
+1. 'py manage.py shell'
+2. from MaasApp.models import ... (User)
+3. User.object.all() of ...all().values()
+4. User 1 >>> x = User.object.all()[0]
 
-How to start the server:
-from the root directory, open in terminal and run 'py manage.py runserver'
+Change Password
+1. save user object like above
+2. from django.contrib.auth.hashers import make_password
+3. x.password = make_password("...")
+4. x.save()
+5. x.password prints the current hashed password
 
-How to create a view:
+Create View
 1. in the templates, create your HTML file
 2. in views.py add a function that returns the template
 3. in the urls.py of MaasApp, add a path with the function from views

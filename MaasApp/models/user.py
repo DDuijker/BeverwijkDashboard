@@ -28,6 +28,7 @@ class UserManager(BaseUserManager):
     def create_superuser(self, email, password=None, **extra_fields):
         """This method creates a superuser, with more functionality and permissions"""
         extra_fields.setdefault('is_dev', True)
+        extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
         if extra_fields.get('is_dev') is not True:
@@ -51,6 +52,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=30)
     is_active = models.BooleanField(default=True)
     is_dev = models.BooleanField(default=False)
+    joined_date = models.DateField(null=True)
+    is_staff = models.BooleanField(default=False)
 
     # Makes it easier to manage user objects
     objects = UserManager()
