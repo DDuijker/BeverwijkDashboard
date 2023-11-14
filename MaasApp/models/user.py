@@ -1,70 +1,46 @@
-"""In this file we will create a user model"""
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractUser, Permission, Group, UserManager
 from django.db import models
-# AbstractUser is the foundation for creating a model, with authentication
-# BasUserManager to provide helper methods for creating and managing user accounts
-# PermissionMixin adds fields and methods related to user permissions
-# User model is defined in settings.py because it is a custom user
 
 
-class UserManager(BaseUserManager):
+class User(AbstractUser):
     """
-    Custom user manager for the CustomUser model.
+    Default User model provided by Django.
 
-    This manager provides methods for creating and managing user accounts.
-    It allows for the creation of regular users and superusers with appropriate privileges.
-    The manager handles user authentication and user data validation.
+    This model includes fields for storing email, first name, last name, etc.
+    It inherits from AbstractUser, which includes the common fields and methods for a user.
     """
-    def create_user(self, email, password=None, **extra_fields):
-        """This method creates a normal user"""
-        if not email:
-            raise ValueError("Email is vereist!")
-        email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
-
-    def create_superuser(self, email, password=None, **extra_fields):
-        """This method creates a superuser, with more functionality and permissions"""
-        extra_fields.setdefault('is_dev', True)
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
-
-        if extra_fields.get('is_dev') is not True:
-            raise ValueError("Superuser must have is_dev=True")
-        if extra_fields.get('is_superuser') is not True:
-            raise ValueError("Superuser must have is_superuser=True")
-
-        return self.create_user(email, password, **extra_fields)
-
-
-class User(AbstractBaseUser, PermissionsMixin):
-    """
-      Custom user model for the application.
-
-      This model represents the user accounts in the application.
-      It includes fields for storing email, first name, and last name.
-      CustomUser also manages user authentication and authorization.
-      """
-    email = models.EmailField(unique=True)
+    username = models.CharField(max_length=30, unique=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
+    email = models.EmailField(unique=True)
     is_active = models.BooleanField(default=True)
     is_dev = models.BooleanField(default=False)
     joined_date = models.DateField(null=True)
     is_staff = models.BooleanField(default=False)
 
-    # Makes it easier to manage user objects
     objects = UserManager()
 
-    # We use the email as our identifier instead of an username
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    # Add related_name to avoid clashes with auth.User
+    groups = models.ManyToManyField(
+        "auth.Group",
+        verbose_name="groups",
+        blank=True,
+        help_text="The groups this user belongs to. A user will get all permissions granted to each of their groups.",
+        related_name="maasapp_user_set",
+    )
+
+    user_permissions = models.ManyToManyField(
+        "auth.Permission",
+        verbose_name="user permissions",
+        blank=True,
+        help_text="Specific permissions for this user.",
+        related_name="maasapp_user_set",
+    )
+
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
 
     def __str__(self):
         """Method for returning the readable representation of an object, in this case the email"""
         return self.email
-
-
 

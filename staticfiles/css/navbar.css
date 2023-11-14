@@ -1,0 +1,15 @@
+.container-fluid.maas-nav {
+            padding-left: 0;
+            padding-right: 0;
+            background: #5976A1;
+            min-height: 100vh;
+        }
+
+.nav-text-primary {
+    color: white
+  }
+
+.nav-text-second {
+    color: white
+    opacity: 0.5
+  }

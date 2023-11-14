@@ -1,0 +1,62 @@
+.container-fluid.maas-nav {
+            min-width: 3rem;
+            padding-left: 0;
+            padding-right: 0.5em;
+            background: #5976A1;
+            min-height: 99vh;
+            text-decoration: none;
+            color: white;
+            padding: 1em;
+        }
+
+.nav-header {
+    display: flex;
+    direction: row;
+}
+
+.dashboard {
+    background: url('/static/images/beverwijk.svg') no-repeat left center;
+    height: 3em;
+}
+
+.head-text .nav-text {
+    padding-left: 2em;
+    margin-left: 1em;
+    background: url('/static/images/dashboard_icon.svg') no-repeat left center;
+    text-decoration: none;
+    color:white;
+    opacity: 1;
+}
+
+.type-text {
+    opacity: 0.5;
+    text-decoration: none;
+    padding-left: 1em;
+}
+
+.nav-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.nav-list li {
+    padding-left: 1em;
+    margin-left: 1em;
+    background: url('/static/images/bike_icon.svg') no-repeat left center;
+    background-size: contain;
+
+}
+
+.nav-text {
+    color: white;
+    padding-left: 1em;
+    opacity: 0.5;
+    text-decoration: none;
+  }
+
+.nav-text:hover{
+    opacity: 1;
+    color: white;
+}
+
+

@@ -1,0 +1,33 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+<div class="container-fluid maas-nav">
+    <div class="nav-header">
+        <div class="dashboard">  </div>
+        <span class="fs-5 fw-semibold">MaaS Dashboard</span>
+    </div>
+    <nav class="nav flex-column">
+        <div class="head-text">
+            <hr>
+            <a class="nav-text" href="#">Dashboard</a>
+            <hr>
+        </div>
+        <div>
+            <p class="type-text">MaaS vervoersmiddelen</p>
+            <ul class="nav-list">
+                <li><a class="nav-text" href="#">Deelfietsen</a></li>
+                <li><a class="nav-text" href="#">Deelauto's</a></li>
+                <li><a class="nav-text" href="#">Deelscooters</a></li>
+            </ul>
+        </div>
+        <div >
+            <p class="type-text">OV</p>
+            <ul class="nav-list">
+                <li><a class="nav-text" href="#">Treinen</a></li>
+                <li><a class="nav-text" href="#">Bussen</a></li>
+            </ul>
+
+
+        </div>
+    </nav>
+</div>

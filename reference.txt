@@ -45,3 +45,7 @@ Create View
 1. in the templates, create your HTML file
 2. in views.py add a function that returns the template
 3. in the urls.py of MaasApp, add a path with the function from views
+
+Include model in admin interface
+1. go to admin.py
+2. admin.site.register([Name of model])
