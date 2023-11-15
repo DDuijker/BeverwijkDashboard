@@ -18,7 +18,6 @@
 }
 
 .head-text .nav-text {
-    padding-left: 2em;
     margin-left: 1em;
     background: url('/static/images/dashboard_icon.svg') no-repeat left center;
     text-decoration: none;
@@ -42,7 +41,6 @@
     margin-left: 1em;
     background: url('/static/images/bike_icon.svg') no-repeat left center;
     background-size: contain;
-
 }
 
 .nav-text {
@@ -52,9 +50,15 @@
     text-decoration: none;
 }
 
+.dashboard:hover {
+    padding-left: 1.4em;
+}
+
 .nav-text:hover {
     opacity: 1;
     color: white;
+    padding-left: 1.3em;
 }
+
 
 
