@@ -1,15 +1,90 @@
 .container-fluid.maas-nav {
-            padding-left: 0;
-            padding-right: 0;
-            background: #5976A1;
-            min-height: 100vh;
-        }
+    min-width: 3rem;
+    background: #5976A1;
+    min-height: 99vh;
+    text-decoration: none;
+    color: white;
+    padding: 1em;
+}
 
-.nav-text-primary {
-    color: white
-  }
+.nav-header {
+    display: flex;
+    flex-direction: row;
+}
 
-.nav-text-second {
-    color: white
-    opacity: 0.5
-  }
+.dashboard {
+    background: url('../static/images/beverwijk.svg') no-repeat left center;
+    height: 3em;
+}
+
+.head-text > .nav-text {
+    margin-left: 1em;
+    padding-left: 2em;
+    background: url('/static/images/dashboard_icon.svg') no-repeat left center;
+    text-decoration: none;
+    color: white;
+    opacity: 1;
+}
+
+.type-text {
+    opacity: 0.5;
+    text-decoration: none;
+    padding-left: 1em;
+}
+
+.nav-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.nav-list li {
+    padding-left: 1em;
+    margin-left: 1em;
+}
+
+.bike_logo {
+    background: url('/static/images/bike_icon.svg') no-repeat left center;
+    background-size: contain;
+    padding-right: 1em;
+}
+
+.car_logo {
+    background: url('/static/images/car_icon.svg') no-repeat left center;
+    background-size: contain;
+}
+
+.scooter_logo {
+    background: url('/static/images/scooter_icon.svg') no-repeat left center;
+    background-size: contain;
+}
+
+.bus_logo {
+    background: url('/static/images/bus_icon.svg') no-repeat left center;
+    background-size: contain;
+}
+
+.train_logo {
+    background: url('/static/images/train_icon.svg') no-repeat left center;
+    background-size: contain;
+    margin: 0.4em;
+}
+
+.nav-text {
+    color: white;
+    padding-left: 1em;
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+.dashboard:hover {
+    padding-left: 2em;
+}
+
+.nav-text:hover {
+    opacity: 1;
+    color: white;
+    padding-left: 2em;
+}
+
+
+
