@@ -1,13 +1,13 @@
 .container-fluid.maas-nav {
-            min-width: 3rem;
-            padding-left: 0;
-            padding-right: 0.5em;
-            background: #5976A1;
-            min-height: 99vh;
-            text-decoration: none;
-            color: white;
-            padding: 1em;
-        }
+    min-width: 3rem;
+    padding-left: 0;
+    padding-right: 0.5em;
+    background: #5976A1;
+    min-height: 99vh;
+    text-decoration: none;
+    color: white;
+    padding: 1em;
+}
 
 .nav-header {
     display: flex;
@@ -24,7 +24,7 @@
     margin-left: 1em;
     background: url('/static/images/dashboard_icon.svg') no-repeat left center;
     text-decoration: none;
-    color:white;
+    color: white;
     opacity: 1;
 }
 
@@ -52,9 +52,9 @@
     padding-left: 1em;
     opacity: 0.5;
     text-decoration: none;
-  }
+}
 
-.nav-text:hover{
+.nav-text:hover {
     opacity: 1;
     color: white;
 }
