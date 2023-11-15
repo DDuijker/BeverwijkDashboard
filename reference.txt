@@ -1,6 +1,11 @@
 How to start the application:
 1. run command 'py manage.py runserver' in the root directory (that contains the manage.py file)
 
+Before you start:
+1. have python 3.11 installed
+2. have django installed => pip install django
+3. have bootstrap5 installed => pip install django-bootstrap-v5
+
 Migrate
 1. In the root directory open the directory in a terminal:
     => open in => terminal
