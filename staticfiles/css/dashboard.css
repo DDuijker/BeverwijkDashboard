@@ -1,4 +1,21 @@
+.maas-overview {
+    background: #F0F0F0;
+    grid-gap: 3em;
+    margin-bottom: 5em;
+}
 
-.title-dashboard {
-    color: red;
+.graph-overview {
+    display: grid;
+    grid-gap: 3em;
+}
+
+.chart {
+
+    margin-right: 1rem; /* Equivalent to me-3 */
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.4); /* Darker shadow */
+    border-radius: 0.3rem; /* Equivalent to rounded */
+}
+
+.header {
+    background: #D9DCE1;
 }

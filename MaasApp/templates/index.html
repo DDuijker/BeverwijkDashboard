@@ -1,40 +1,38 @@
-{% extends "master.html" %}
+{% extends 'master.html' %}
 {% load static %}
-
-<link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
-<head>
-
-    {% block title %}
-    MaaS Dashboard
-    {% endblock %}
-</head>
-
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
+
 <div class="container text-secondary fw-semibold">
     <div class="row">
-        <h4>Dashboard</h4>
+        <h3>Dashboard</h3>
     </div>
     <!--Overzicht percentage groei-->
-<!--    #TODO: Change into css file-->
-    <div class="row mb-5">
-        <div class="col-2 me-3 bg-light shadow-lg rounded">Deelfietsen</div>
-        <div class="col-2 me-3 bg-light shadow-lg rounded">Deelauto's</div>
-        <div class="col-2 me-3 bg-light shadow-lg rounded">Deelscooters</div>
-        <div class="col-2 me-3 bg-light shadow-lg rounded">Treinen</div>
-        <div class="col-2 me-3 bg-light shadow-lg rounded">Bussen</div>
+    <!--    #TODO: Change into css file-->
+    <div class="row container maas-overview ">
+        <div class="col transport-mode">
+            <h5 class="maas-mode-text">Deelfietsen</h5>
+        </div><div class="col transport-mode">
+            <h5 class="maas-mode-text">Deelauto's</h5>
+        </div><div class="col transport-mode">
+            <h5 class="maas-mode-text">Deelscooters</h5>
+        </div><div class="col transport-mode">
+            <h5 class="maas-mode-text">Treinen</h5>
+        </div><div class="col transport-mode">
+            <h5 class="maas-mode-text">Bussen</h5>
+        </div>
+
     </div>
     <!--Grafieken-->
-    <div class="row gap-5">
-        <div class="col-6 shadow-lg bg-light rounded">
-            <div class="row">Grafiek</div>
+    <div class="row container graph-overview">
+        <div class="col chart ">
+            <div class="row header">Grafiek</div>
             <div class="row "></div>
         </div>
-        <div class="col-4 shadow-lg bg-light rounded">
-            <div class="row .bg-light">Cirkeldiagram</div>
+        <div class="col chart ">
+            <div class="row header">Cirkeldiagram</div>
             <div class="row"></div>
         </div>
     </div>
 </div>
-
-
 {% endblock %}

@@ -1,0 +1,36 @@
+.maas-overview {
+
+    column-gap: 3em;
+    margin-bottom: 5em;
+}
+
+.graph-overview {
+    column-gap: 3em;
+}
+
+.transport-mode {
+    padding-top: 0.5em;
+    border-radius: 0.5em;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+    background: #F0F0F0;
+}
+
+.maas-mode-text {
+    font-size: medium;
+}
+
+.percentage {
+    font-weight: bold;
+}
+
+.chart {
+    background: #F0F0F0;
+    margin-right: 1rem; /* Equivalent to me-3 */
+    border-radius: 0.5rem; /* Equivalent to rounded */
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+
+.header {
+    background: #F0F0F0;
+    padding-left: 1em;
+}
