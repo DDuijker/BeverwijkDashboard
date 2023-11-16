@@ -1,7 +1,9 @@
+
 .container-fluid.maas-nav {
-    min-width: 15rem;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
     background: #5976A1;
-    min-height: 99vh;
     text-decoration: none;
     color: white;
     padding: 1em;

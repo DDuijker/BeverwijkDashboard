@@ -1,20 +1,22 @@
+
 .container-fluid.maas-nav {
-    min-width: 3rem;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
     background: #5976A1;
-    min-height: 99vh;
     text-decoration: none;
     color: white;
     padding: 1em;
 }
 
 .nav-header {
-    display: grid;
-    flex-direction: row;
+    display: flex;
 }
 
-.dashboard {
-    background: url('../static/images/beverwijk.svg') no-repeat left center;
-    height: 3em;
+.beverwijk_logo {
+    background: url('/static/images/beverwijk_logo.svg') no-repeat left center;
+    height: 4em;
+    width: 5em;
 }
 
 .head-text > .nav-text {

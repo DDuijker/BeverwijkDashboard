@@ -1,0 +1,12 @@
+.navbar {
+    background: white;
+
+}
+
+.search-button {
+    background: #5976A1;
+}
+
+.search-button:hover {
+    background: #677d98;
+}

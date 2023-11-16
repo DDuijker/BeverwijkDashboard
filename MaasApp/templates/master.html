@@ -1,22 +1,39 @@
-<!DOCTYPE html>
+<html>
+
 <head>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/master.css' %}"/>
     <title>{% block title %}{% endblock %}</title>
     {% load django_bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 </head>
-<div>
-    <div class="container-fluid p-0">
-        <div class="row">
-            <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2">
-                {% include 'navbar.html' %}
+<body>
+<div class="row g-0 h-100">
+    <div class="col-auto side-navbar">
+        <!-- Sidebar -->
+        <div class=" col">
+            {% include 'navbar.html' %}
+        </div>
+    </div>
+
+    <div class="col d-flex flex-column ">
+        <div class="row g-0">
+
+            <!-- Top navbar -->
+            <div class="top-navbar">
+                {% include 'topnavbar.html'%}
             </div>
-            <div class="col-sm-8 col-md-7 col-lg-9 col-xl-10">
+        </div>
+        <div class="row g-0 flex-grow-1">
+            <!--Content-->
+            <div class="flex-grow-1 content p-3">
                 {% block content %}
                 {% endblock %}
             </div>
+
         </div>
     </div>
 </div>
+</body>
+</html>
