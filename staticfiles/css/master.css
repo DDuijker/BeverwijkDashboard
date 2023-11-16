@@ -1,5 +1,5 @@
 body {
-  height: 100vh;
+  height: 100%;
 }
 
 .side-navbar {
@@ -10,4 +10,5 @@ body {
 
 .content {
   background: #F0F0F0;
+  height: 100%;
 }

@@ -1,12 +1,15 @@
 {% extends "master.html" %}
+{% load static %}
 
-{% block title %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
+<head>
+
+    {% block title %}
     MaaS Dashboard
-{% endblock %}
+    {% endblock %}
+</head>
 
 {% block content %}
-    <h1>Beverwijk Dashboard</h1>
-    <h3>Gebruikers</h3>
-    <p>Klik voor een overzicht van de <a href="/users">gebruikers</a></p>
+<h4 class="text-secondary">Dashboard</h4>
 
-{% endblock  %}
+{% endblock %}
