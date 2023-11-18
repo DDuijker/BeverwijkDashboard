@@ -9,17 +9,11 @@
     </div>
     <!--Overview percentage growth-->
     <div class="row container maas-overview ">
-        <div class="col transport-mode">
-            <h5 class="maas-mode-text">Deelfietsen</h5>
-        </div><div class="col transport-mode">
-            <h5 class="maas-mode-text">Deelauto's</h5>
-        </div><div class="col transport-mode">
-            <h5 class="maas-mode-text">Deelscooters</h5>
-        </div><div class="col transport-mode">
-            <h5 class="maas-mode-text">Treinen</h5>
-        </div><div class="col transport-mode">
-            <h5 class="maas-mode-text">Bussen</h5>
-        </div>
+        {% include "./components/percentage-growth.html" with name="Deelfietsen" %}
+        {% include "./components/percentage-growth.html" with name="Deelauto's" %}
+        {% include "./components/percentage-growth.html" with name="Deelscooters" %}
+        {% include "./components/percentage-growth.html" with name="Treinen" %}
+        {% include "./components/percentage-growth.html" with name="Bussen" %}
 
     </div>
     <!--Grafieken-->
