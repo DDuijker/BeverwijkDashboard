@@ -1,3 +1,20 @@
-<div class="col transport-mode">
-    <h5 class="maas-mode-text">{{name}}</h5>
+<div class="col-3 transport-mode">
+    <div class="row">
+
+        <div class="col">
+            <h5 class="row maas-mode-text">{{name}}</h5>
+            <div class="row align-left">
+                <h3>{{percentage}}%</h3>
+                {% if percentage > 0 %}
+                <img class="arrow" src="../../static/images/arrow_up.svg" alt="arrow up"/>
+                {% else %}
+                <img class="arrow" src="../../static/images/arrow_down.svg" alt="arrow down"/>
+                {% endif %}
+
+            </div>
+        </div>
+        <div class="col">
+            <img src="{{image}}"/>
+        </div>
+    </div>
 </div>

@@ -9,11 +9,11 @@
     </div>
     <!--Overview percentage growth-->
     <div class="row container maas-overview ">
-        {% include "./components/percentage-growth.html" with name="Deelfietsen" %}
-        {% include "./components/percentage-growth.html" with name="Deelauto's" %}
-        {% include "./components/percentage-growth.html" with name="Deelscooters" %}
-        {% include "./components/percentage-growth.html" with name="Treinen" %}
-        {% include "./components/percentage-growth.html" with name="Bussen" %}
+        {% include "./components/percentage-growth.html" with name="Deelfietsen" percentage=35 image="../static/images/bike_darker.svg" %}
+        {% include "./components/percentage-growth.html" with name="Deelauto's" percentage=10 image="../static/images/car_darker.svg" %}
+        {% include "./components/percentage-growth.html" with name="Deelscooters" percentage=-5 image="../static/images/scooter_darker.svg" %}
+        {% include "./components/percentage-growth.html" with name="Treinen" percentage=2 image="../static/images/bike_icon.svg" %}
+        {% include "./components/percentage-growth.html" with name="Bussen" percentage=3 image="../static/images/bike_icon.svg" %}
 
     </div>
     <!--Grafieken-->
