@@ -24,13 +24,12 @@
 }
 
 .chart {
+    padding: 0.5em;
+    border-radius: 0.5em;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
     background: #F0F0F0;
-    margin-right: 1rem; /* Equivalent to me-3 */
-    border-radius: 0.5rem; /* Equivalent to rounded */
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 }
 
-.header {
-    background: #F0F0F0;
+.chart > .header {
     padding-left: 1em;
 }

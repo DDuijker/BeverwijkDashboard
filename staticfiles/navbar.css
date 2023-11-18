@@ -1,0 +1,92 @@
+
+.container-fluid.maas-nav {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    background: #5976A1;
+    text-decoration: none;
+    color: white;
+    padding: 1em;
+}
+
+.nav-header {
+    display: flex;
+}
+
+.beverwijk_logo {
+    background: url('./images/beverwijk_logo.svg') no-repeat left center;
+    height: 4em;
+    width: 5em;
+}
+
+.head-text > .nav-text {
+    margin-left: 1em;
+    padding-left: 2em;
+    background: url('./images/dashboard_icon.svg') no-repeat left center;
+    text-decoration: none;
+    color: white;
+    opacity: 1;
+}
+
+.type-text {
+    opacity: 0.5;
+    text-decoration: none;
+    padding-left: 1em;
+}
+
+.nav-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.nav-list li {
+    padding-left: 1em;
+    margin-left: 1em;
+}
+
+.bike_logo {
+    background: url('./images/bike_icon.svg') no-repeat left center;
+    background-size: contain;
+    padding-right: 1em;
+}
+
+.car_logo {
+    background: url('./images/car_icon.svg') no-repeat left center;
+    background-size: contain;
+}
+
+.scooter_logo {
+    background: url('./images/scooter_icon.svg') no-repeat left center;
+    background-size: contain;
+}
+
+.bus_logo {
+    background: url('./images/bus_icon.svg') no-repeat left center;
+    background-size: contain;
+}
+
+.train_logo {
+    background: url('./images/train_icon.svg') no-repeat left center;
+    background-size: contain;
+    margin: 0.4em;
+}
+
+.nav-text {
+    color: white;
+    padding-left: 1em;
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+.dashboard:hover {
+    padding-left: 2em;
+}
+
+.nav-text:hover {
+    opacity: 1;
+    color: white;
+    padding-left: 2em;
+}
+
+
+
