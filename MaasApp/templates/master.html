@@ -2,7 +2,7 @@
 
 <head>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/master.css' %}"/>
+    <link rel="stylesheet" href="{% static '/css/master.css' %}"/>
     <title>{% block title %}{% endblock %}</title>
     {% load django_bootstrap5 %}
     {% bootstrap_css %}
@@ -13,7 +13,7 @@
     <div class="col-auto side-navbar">
         <!-- Sidebar -->
         <div class=" col">
-            {% include 'navbar.html' %}
+            {% include './navbar/navbar.html' %}
         </div>
     </div>
 
@@ -22,7 +22,7 @@
 
             <!-- Top navbar -->
             <div class="top-navbar">
-                {% include 'topnavbar.html'%}
+                {% include './navbar/topnavbar.html'%}
             </div>
         </div>
         <div class="row g-0 flex-grow-1">

@@ -1,7 +1,7 @@
 .maas-overview {
-
     column-gap: 3em;
-    margin-bottom: 5em;
+    row-gap: 3em;
+    margin-bottom: 3em;
 }
 
 .graph-overview {

@@ -13,7 +13,7 @@ def index(request):
 def all_users(request):
     """Loads the all_users template with an object containing the users object"""
     users = User.objects.all().values()
-    template = loader.get_template('users.html')
+    template = loader.get_template('./pages/users.html')
     context = {
         'users': users
     }
@@ -21,27 +21,27 @@ def all_users(request):
 
 
 def bikes(request):
-    template = loader.get_template('bikes.html')
+    template = loader.get_template('./pages/bikes.html')
     return HttpResponse(template.render())
 
 
 def cars(request):
-    template = loader.get_template('cars.html')
+    template = loader.get_template('./pages/cars.html')
     return HttpResponse(template.render())
 
 
 def scooters(request):
-    template = loader.get_template('scooters.html')
+    template = loader.get_template('./pages/scooters.html')
     return HttpResponse(template.render())
 
 
 def trains(request):
-    template = loader.get_template('trains.html')
+    template = loader.get_template('./pages/trains.html')
     return HttpResponse(template.render())
 
 
 def busses(request):
-    template = loader.get_template('busses.html')
+    template = loader.get_template('./pages/busses.html')
     return HttpResponse(template.render())
 
 
@@ -55,7 +55,7 @@ def testing(request):
 
 def user_details(request, request_id):
     user = User.objects.get(id=request_id)
-    template = loader.get_template('user_details.html')
+    template = loader.get_template('./pages/user_details.html')
     context = {
         'user': user
     }
