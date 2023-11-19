@@ -1,3 +1,6 @@
 from .user import User
-from .location import Location
-from .vehicle import Vehicle
+from .location import Location, LocationType
+from .vehicle import Vehicle, VehicleType, Status, Condition
+from .payment import Payment, PaymentStatus
+from .booking import Booking, BookingStatus
+
