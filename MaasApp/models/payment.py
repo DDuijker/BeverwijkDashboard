@@ -17,11 +17,26 @@ class PaymentStatus(enum.Enum):
     }
 
 
+class PaymentMethod(enum.Enum):
+    IDEAL = 0
+    PAYPAL = 1
+    CREDIT_CARD = 2
+    BANK_TRANSFER = 3
+
+    __labels__ = {
+        IDEAL: "iDeal",
+        PAYPAL: "PayPal",
+        CREDIT_CARD: "Credit card",
+        BANK_TRANSFER: "Overmaken naar bank"
+    }
+
+
 class Payment(models.Model):
     payment_id = models.AutoField(primary_key=True)
-    username = models.ForeignKey(to=User, on_delete=models.SET_NULL, null=True)
+    username = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     datetime = models.DateTimeField()
+    payment_method = enum.EnumField(PaymentMethod, default=PaymentMethod.IDEAL)
     status = enum.EnumField(PaymentStatus, default=PaymentStatus.PENDING)
 
     def change_status(self, new_status):

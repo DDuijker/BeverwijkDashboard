@@ -51,7 +51,7 @@ class Condition(enum.Enum):
 
 class Vehicle(models.Model):
     vehicle_id = models.AutoField(primary_key=True)
-    current_location_id = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True)
+    current_location = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True, to_field='location_id')
     type = enum.EnumField(VehicleType)
     model = models.CharField(max_length=100, null=True)
     license_plate = models.CharField(max_length=6)

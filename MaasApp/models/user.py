@@ -13,9 +13,6 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField(unique=True)
-    is_active = models.BooleanField(default=True)
-    is_dev = models.BooleanField(default=False)
-    joined_date = models.DateField(null=True)
     is_staff = models.BooleanField(default=False)
 
     objects = UserManager()
