@@ -2,6 +2,7 @@
     column-gap: 3em;
     row-gap: 3em;
     margin-bottom: 3em;
+    justify-content: space-around;
 }
 
 .graph-overview {
@@ -15,11 +16,9 @@
     background: #F0F0F0;
 }
 
-.arrow {
-    height: 1em;
-}
 .maas-mode-text {
     font-size: medium;
+    padding-left: 1em;
 }
 
 .percentage {
@@ -35,4 +34,15 @@
 
 .chart > .header {
     padding-left: 1em;
+}
+
+.first-column-percentage {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.first-column-percentage > .maas-mode-text {
+    display: flex;
+    flex-direction: row;
 }
