@@ -1,1 +1,1 @@
-# Import your models here
+from .models import user, location, vehicle
