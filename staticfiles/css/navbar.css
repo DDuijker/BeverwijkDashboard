@@ -45,30 +45,38 @@
 }
 
 .bike_logo {
-    background: url('/static/images/bike_icon.svg') no-repeat left center;
+    background: url('../images/bike_icon.svg') no-repeat left center;
     background-size: contain;
     padding-right: 1em;
 }
 
 .car_logo {
-    background: url('/static/images/car_icon.svg') no-repeat left center;
+    background: url('../images/car_icon.svg') no-repeat left center;
     background-size: contain;
 }
 
 .scooter_logo {
-    background: url('/static/images/scooter_icon.svg') no-repeat left center;
+    background: url('../images/scooter_icon.svg') no-repeat left center;
     background-size: contain;
 }
 
 .bus_logo {
-    background: url('/static/images/bus_icon.svg') no-repeat left center;
+    background: url('../images/bus_icon.svg') no-repeat left center;
     background-size: contain;
 }
 
 .train_logo {
-    background: url('/static/images/train_icon.svg') no-repeat left center;
+    background: url('../images/train_icon.svg') no-repeat left center;
     background-size: contain;
     margin: 0.4em;
+}
+
+.other-ov {
+    background: url("../images/metro_icon.svg") no-repeat left center;
+}
+
+.metro_logo {
+    background: url("../images/metro_icon.svg") no-repeat left center;
 }
 
 .nav-text {

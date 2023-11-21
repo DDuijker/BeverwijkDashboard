@@ -41,7 +41,7 @@ def trains(request):
 
 
 def busses(request):
-    template = loader.get_template('./pages/busses.html')
+    template = loader.get_template('./pages/other-ov.html')
     return HttpResponse(template.render())
 
 
