@@ -8,11 +8,13 @@ from django.shortcuts import render
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
+
 plt.switch_backend('Agg')
 
 
 def index(request):
     """Loads the index page"""
+
     template = loader.get_template('index.html')
     return HttpResponse(template.render())
 
@@ -27,7 +29,8 @@ def all_users(request):
     return HttpResponse(template.render(context, request))
 
 
-def generate_bar_chart(categories, values):
+def generate_bar_chart(categories, values, special_bars=None, x_label=None, y_label=None, title=None,
+                       y_ticks=None, grid=True, grid_alpha=0.5):
     # Set the background color
     plt.figure(facecolor='#F8F8F8')
 
@@ -38,12 +41,12 @@ def generate_bar_chart(categories, values):
     bars = plt.bar(categories, values, color=colors, edgecolor='#B0B1C3', linewidth=1.2, alpha=0.7)
 
     # Set individual colors for specific bars
-    special_bars = [1, 3, 5]  # Adjust as needed
-    for i in special_bars:
-        bars[i].set_color('#B0B1C3')
+    if special_bars:
+        for i in special_bars:
+            bars[i].set_color('#B0B1C3')
 
     # Style the plot
-    style_chart()
+    style_chart(x_label, y_label, title, y_ticks, grid, grid_alpha)
 
     # Save the plot to a BytesIO object
     image_stream = BytesIO()
@@ -55,15 +58,16 @@ def generate_bar_chart(categories, values):
     return img_data
 
 
-def style_chart():
-    plt.xlabel('Dagen van de week', fontsize=12, color='#696A8F')
-    plt.ylabel('Aantal ritten', fontsize=12, color='#696A8F')
-    plt.title('Ritten per dag', fontsize=14, color='#696A8F')
-    plt.grid(axis='y', linestyle='--', alpha=0.5)
+def style_chart(x_label, y_label, title, y_ticks, grid, grid_alpha):
+    plt.xlabel(x_label, fontsize=12, color='#696A8F')
+    plt.ylabel(y_label, fontsize=12, color='#696A8F')
+    plt.title(title, fontsize=14, color='#696A8F')
 
-    # Set static values on the y-axis
-    static_y_values = [0, 50, 100, 150, 200, 250]
-    plt.yticks(static_y_values)
+    if grid:
+        plt.grid(axis='y', linestyle='--', alpha=grid_alpha)
+
+    if y_ticks is not None:
+        plt.yticks(y_ticks)
 
 
 def bikes(request):
@@ -72,7 +76,8 @@ def bikes(request):
     values = [100, 200, 150, 120, 180, 90, 160]
 
     # Generate bar chart
-    img_data = generate_bar_chart(categories, values)
+    img_data = generate_bar_chart(categories, values, special_bars=[1, 3, 5], y_ticks=[0, 50, 100, 150, 200, 250],
+                                  x_label='Dagen van de week', y_label='Aantal ritten', title='Ritten per dag')
 
     # Pass the image data to the template
     context = {
