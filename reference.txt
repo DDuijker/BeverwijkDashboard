@@ -2,8 +2,13 @@ Before you start:
 1. have python 3.11 installed
 2. have django installed => pip install django
 3. have bootstrap5 installed => pip install django-bootstrap5
-4. make sure you have a venv installed and run the application from the venv
-5. have whitenoise installed
+4. have bootstrap-v5 installed => pip install django-bootstrap-v5
+5. have django_enumfield installed => pip install django_enumfield
+6. have matplotlib installed => pip install matplotlib
+7. make sure you have a venv installed and run the application from the venv => cd .\venv\ => Scripts/activate
+8. have whitenoise installed => pip install whitenoise
+9. have requests installed => pip install requests
+
 
 
 How to start the application:

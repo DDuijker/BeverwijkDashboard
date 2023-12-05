@@ -5,7 +5,14 @@
 {% endblock %}
 
 {% block content %}
-<h4 class="text-secondary">Overig ov</h4>
+    <h4 class="text-secondary">Overig ov</h4>
 
-
-{% endblock  %}
+    <ul class="list-group">
+        {% for item in api_data %}
+            <li class="list-group-item">
+                <h5>{{ item.title }}</h5>
+                <p>{{ item.body }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

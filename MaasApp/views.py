@@ -2,6 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from .models import User
+from django.shortcuts import render
+import matplotlib.pyplot as plt
+from io import BytesIO
+import base64
+import requests
 
 
 def index(request):
@@ -21,9 +26,46 @@ def all_users(request):
 
 
 def bikes(request):
-    template = loader.get_template('./pages/bikes.html')
-    return HttpResponse(template.render())
+    # Sample data
+    categories = ['ma', 'di', 'wo', 'do', 'vr', 'za', 'zo']
+    values = [100, 200, 150, 120, 180, 90, 160]
 
+    # Set the background color
+    plt.figure(facecolor='#F8F8F8')
+
+    # Plotting the bar chart with styling options
+    bars = plt.bar(categories, values,
+                   color=['#696A8F', '#696A8F', '#696A8F', '#696A8F', '#696A8F', '#696A8F', '#696A8F'],
+                   edgecolor='#B0B1C3', linewidth=1.2, alpha=0.7)
+
+    # Set individual colors for each bar
+    bars[1].set_color('#B0B1C3')
+    bars[3].set_color('#B0B1C3')
+    bars[5].set_color('#B0B1C3')
+
+    plt.xlabel('Dagen van de week', fontsize=12, color='#696A8F')
+    plt.ylabel('aantal ritten', fontsize=12, color='#696A8F')
+    plt.title('Ritten per dag', fontsize=14, color='#696A8F')
+    plt.grid(axis='y', linestyle='--', alpha=0.5)
+
+    # Set static values on the y-axis
+    static_y_values = [0, 50, 100, 150, 200, 250]
+    plt.yticks(static_y_values)
+
+    # Save the plot to a BytesIO object
+    image_stream = BytesIO()
+    plt.savefig(image_stream, format='png')
+    image_stream.seek(0)
+    img_data = base64.b64encode(image_stream.read()).decode('utf-8')
+
+    plt.close()  # Close the plot to free up resources
+
+    # Pass the image data to the template
+    context = {
+        'graph': img_data,
+    }
+
+    return render(request, 'pages/bikes.html', context)
 
 def cars(request):
     template = loader.get_template('./pages/cars.html')
@@ -41,8 +83,16 @@ def trains(request):
 
 
 def busses(request):
-    template = loader.get_template('./pages/other-ov.html')
-    return HttpResponse(template.render())
+    api_url = 'https://jsonplaceholder.typicode.com/posts'  # Replace with your API URL
+    response = requests.get(api_url)
+
+    if response.status_code == 200:
+        api_data = response.json()
+    else:
+        # Handle API error, for example, set api_data to an empty list
+        api_data = []
+
+    return render(request, './pages/other-ov.html', {'api_data': api_data})
 
 
 def testing(request):
@@ -60,3 +110,4 @@ def user_details(request, request_id):
         'user': user
     }
     return HttpResponse(template.render(context, request))
+
