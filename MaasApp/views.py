@@ -1,3 +1,4 @@
+from django.contrib.sites import requests
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
@@ -6,7 +7,6 @@ from django.shortcuts import render
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
-import requests
 
 
 def index(request):
@@ -83,16 +83,7 @@ def trains(request):
 
 
 def busses(request):
-    api_url = 'https://jsonplaceholder.typicode.com/posts'  # Replace with your API URL
-    response = requests.get(api_url)
-
-    if response.status_code == 200:
-        api_data = response.json()
-    else:
-        # Handle API error, for example, set api_data to an empty list
-        api_data = []
-
-    return render(request, './pages/other-ov.html', {'api_data': api_data})
+    return render(request, './pages/other-ov.html')
 
 
 def testing(request):
