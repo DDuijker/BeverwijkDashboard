@@ -1,3 +1,4 @@
+import numpy as np
 from django.contrib.sites import requests
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -7,6 +8,7 @@ from django.shortcuts import render
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
+plt.switch_backend('Agg')
 
 
 def index(request):
@@ -25,26 +27,37 @@ def all_users(request):
     return HttpResponse(template.render(context, request))
 
 
-def bikes(request):
-    # Sample data
-    categories = ['ma', 'di', 'wo', 'do', 'vr', 'za', 'zo']
-    values = [100, 200, 150, 120, 180, 90, 160]
-
+def generate_bar_chart(categories, values):
     # Set the background color
     plt.figure(facecolor='#F8F8F8')
 
+    # Use a colormap to generate colors dynamically
+    colors = plt.cm.viridis(np.linspace(0, 1, len(categories)))
+
     # Plotting the bar chart with styling options
-    bars = plt.bar(categories, values,
-                   color=['#696A8F', '#696A8F', '#696A8F', '#696A8F', '#696A8F', '#696A8F', '#696A8F'],
-                   edgecolor='#B0B1C3', linewidth=1.2, alpha=0.7)
+    bars = plt.bar(categories, values, color=colors, edgecolor='#B0B1C3', linewidth=1.2, alpha=0.7)
 
-    # Set individual colors for each bar
-    bars[1].set_color('#B0B1C3')
-    bars[3].set_color('#B0B1C3')
-    bars[5].set_color('#B0B1C3')
+    # Set individual colors for specific bars
+    special_bars = [1, 3, 5]  # Adjust as needed
+    for i in special_bars:
+        bars[i].set_color('#B0B1C3')
 
+    # Style the plot
+    style_chart()
+
+    # Save the plot to a BytesIO object
+    image_stream = BytesIO()
+    plt.savefig(image_stream, format='png')
+    image_stream.seek(0)
+    img_data = base64.b64encode(image_stream.read()).decode('utf-8')
+    plt.close()  # Close the plot to free up resources
+
+    return img_data
+
+
+def style_chart():
     plt.xlabel('Dagen van de week', fontsize=12, color='#696A8F')
-    plt.ylabel('aantal ritten', fontsize=12, color='#696A8F')
+    plt.ylabel('Aantal ritten', fontsize=12, color='#696A8F')
     plt.title('Ritten per dag', fontsize=14, color='#696A8F')
     plt.grid(axis='y', linestyle='--', alpha=0.5)
 
@@ -52,13 +65,14 @@ def bikes(request):
     static_y_values = [0, 50, 100, 150, 200, 250]
     plt.yticks(static_y_values)
 
-    # Save the plot to a BytesIO object
-    image_stream = BytesIO()
-    plt.savefig(image_stream, format='png')
-    image_stream.seek(0)
-    img_data = base64.b64encode(image_stream.read()).decode('utf-8')
 
-    plt.close()  # Close the plot to free up resources
+def bikes(request):
+    # Sample data
+    categories = ['ma', 'di', 'wo', 'do', 'vr', 'za', 'zo']
+    values = [100, 200, 150, 120, 180, 90, 160]
+
+    # Generate bar chart
+    img_data = generate_bar_chart(categories, values)
 
     # Pass the image data to the template
     context = {
@@ -66,6 +80,7 @@ def bikes(request):
     }
 
     return render(request, 'pages/bikes.html', context)
+
 
 def cars(request):
     template = loader.get_template('./pages/cars.html')
@@ -101,4 +116,3 @@ def user_details(request, request_id):
         'user': user
     }
     return HttpResponse(template.render(context, request))
-
