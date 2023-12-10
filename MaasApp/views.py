@@ -22,8 +22,16 @@ def index(request):
         title="MaaS gebruik per maand",
         y_ticks=[0, 50, 100, 200, 300, 400, 500]
     )
+
+    circle_categories = ['Auto', 'Fiets', 'Scooters', 'Treinen', 'Overig ov']
+    circle_values = [200, 180, 10, 150, 100]
+
+    circle_chart = GraphGeneratorService.generate_pie_chart(
+        circle_categories, circle_values, "Verdeling vervoersmiddelen"
+    )
     context = {
-        'line_graph': graph
+        'line_graph': graph,
+        'circle_chart': circle_chart
     }
     template = loader.get_template('index.html')
     return HttpResponse(template.render(context, request))
@@ -46,7 +54,7 @@ def bikes(request):
 
     # Generate bar chart
     bar_chart = GraphGeneratorService.generate_bar_chart(
-        categories, values, request
+        categories, values, x_label="Dag", y_label="Ritten", title="Ritten per dag"
     )
 
     # Pass the image data to the template

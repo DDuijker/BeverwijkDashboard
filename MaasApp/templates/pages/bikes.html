@@ -1,13 +1,54 @@
 {% extends "master.html" %}
 
 {% block title %}
-    Deelfietsen
+Deelfietsen
 {% endblock %}
 
 {% block content %}
-<h4 class="text-secondary">Deelfietsen</h4>
-<!-- Display the graph -->
 
-    <img src="data:image/png;base64,{{ graph }}" alt="Graph" class="img-fluid">
+<!-- Display the graph -->
+<div class="container-fluid">
+    <div class="row">
+        <h4 class="text-secondary">Deelfietsen</h4>
+    </div>
+
+    <div class="row">
+        <!--  Bar chart  -->
+        <div class="col-sm-12 col-md-6">
+            <img src="data:image/png;base64,{{ graph }}" alt="Graph" class="img-fluid">
+        </div>
+        <!-- Comparison with heemskerk-->
+        <div class="col-sm-12 col-md-6">
+            <table class="table table-light table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Indicator</th>
+                    <th scope="col">Beverwijk</th>
+                    <th scope="col">Heemskerk</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <!--TODO: Haal deze data uit de database?-->
+                    <th scope="row">Aantal Bewoners</th>
+                    <td>42.711</td>
+                    <td>39.431</td>
+                </tr>
+                <tr>
+                    <th scope="row">Ondergrondse fietsenstalling</th>
+                    <td>Ja</td>
+                    <td>Nee</td>
+                </tr>
+                <tr>
+                    <th scope="row">Ovfiets capaciteit</th>
+                    <td>93</td>
+                    <td>9</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 
 {% endblock  %}

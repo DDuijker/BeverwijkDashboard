@@ -66,5 +66,10 @@ class GraphGeneratorService(ChartStyler):
         # Save the plot to a BytesIO object and encode it in base64
         return ChartStyler.save_and_encode_plot()
 
-# Example usage:
-# img_data = GraphGeneratorService.make_line_graph(...)
+    @staticmethod
+    def generate_pie_chart(categories, values, title):
+        plt.figure(figsize=(8, 8))
+        plt.pie(values, labels=categories, autopct='%1.1f%%', startangle=140)
+        plt.title(title)
+        plt.axis('equal')  # Ensure pie chart is a circle
+        return GraphGeneratorService.save_and_encode_plot()
