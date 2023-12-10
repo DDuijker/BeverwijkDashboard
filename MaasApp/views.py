@@ -1,13 +1,9 @@
-import numpy as np
-from django.contrib.sites import requests
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
-from .models import User
-from django.shortcuts import render
 import matplotlib.pyplot as plt
-from io import BytesIO
-import base64
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.template import loader
+from .services.graph_generator_service import GraphGeneratorService
+from .models import User
 
 plt.switch_backend('Agg')
 
@@ -15,8 +11,22 @@ plt.switch_backend('Agg')
 def index(request):
     """Loads the index page"""
 
+    # Define your data for the categories and values
+    categories = ['Jan', 'Feb', 'Mrt', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt',  'Nov', 'Dec']  # Days of the week in Dutch
+    values = [120, 150, 180, 200, 230, 170, 190, 120, 40, 400, 430, 380]  # Example number of rides per day
+
+    graph = GraphGeneratorService.make_line_graph(
+        x_values=categories, y_values=values,
+        x_label="Maanden",
+        y_label="Aantal ritten",
+        title="MaaS gebruik per maand",
+        y_ticks=[0, 50, 100, 200, 300, 400, 500]
+    )
+    context = {
+        'line_graph': graph
+    }
     template = loader.get_template('index.html')
-    return HttpResponse(template.render())
+    return HttpResponse(template.render(context, request))
 
 
 def all_users(request):
@@ -29,59 +39,19 @@ def all_users(request):
     return HttpResponse(template.render(context, request))
 
 
-def generate_bar_chart(categories, values, special_bars=None, x_label=None, y_label=None, title=None,
-                       y_ticks=None, grid=True, grid_alpha=0.5):
-    # Set the background color
-    plt.figure(facecolor='#F8F8F8')
-
-    # Use a colormap to generate colors dynamically
-    colors = plt.cm.viridis(np.linspace(0, 1, len(categories)))
-
-    # Plotting the bar chart with styling options
-    bars = plt.bar(categories, values, color=colors, edgecolor='#B0B1C3', linewidth=1.2, alpha=0.7)
-
-    # Set individual colors for specific bars
-    if special_bars:
-        for i in special_bars:
-            bars[i].set_color('#B0B1C3')
-
-    # Style the plot
-    style_chart(x_label, y_label, title, y_ticks, grid, grid_alpha)
-
-    # Save the plot to a BytesIO object
-    image_stream = BytesIO()
-    plt.savefig(image_stream, format='png')
-    image_stream.seek(0)
-    img_data = base64.b64encode(image_stream.read()).decode('utf-8')
-    plt.close()  # Close the plot to free up resources
-
-    return img_data
-
-
-def style_chart(x_label, y_label, title, y_ticks, grid, grid_alpha):
-    plt.xlabel(x_label, fontsize=12, color='#696A8F')
-    plt.ylabel(y_label, fontsize=12, color='#696A8F')
-    plt.title(title, fontsize=14, color='#696A8F')
-
-    if grid:
-        plt.grid(axis='y', linestyle='--', alpha=grid_alpha)
-
-    if y_ticks is not None:
-        plt.yticks(y_ticks)
-
-
 def bikes(request):
     # Sample data
     categories = ['ma', 'di', 'wo', 'do', 'vr', 'za', 'zo']
     values = [100, 200, 150, 120, 180, 90, 160]
 
     # Generate bar chart
-    img_data = generate_bar_chart(categories, values, special_bars=[1, 3, 5], y_ticks=[0, 50, 100, 150, 200, 250],
-                                  x_label='Dagen van de week', y_label='Aantal ritten', title='Ritten per dag')
+    bar_chart = GraphGeneratorService.generate_bar_chart(
+        categories, values, request
+    )
 
     # Pass the image data to the template
     context = {
-        'graph': img_data,
+        'graph': bar_chart,
     }
 
     return render(request, 'pages/bikes.html', context)

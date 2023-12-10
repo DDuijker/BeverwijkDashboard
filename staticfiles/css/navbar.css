@@ -73,11 +73,10 @@
 
 .other-ov {
     background: url("../images/metro_icon.svg") no-repeat left center;
+    background-size: contain;
 }
 
-.metro_logo {
-    background: url("../images/metro_icon.svg") no-repeat left center;
-}
+
 
 .nav-text {
     color: white;
