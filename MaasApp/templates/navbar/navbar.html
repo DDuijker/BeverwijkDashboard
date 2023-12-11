@@ -1,12 +1,12 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 
-<div class="container-fluid maas-nav">
+<div class="container-fluid maas-nav min-vh-100">
     <div class="nav-header d-flex align-items-center">
         <div class="beverwijk_logo"></div>
         <div class="fw-bold ml-2 text-wrap pr-2">MaaS Dashboard</div>
     </div>
-    <nav class="nav flex-column">
+    <nav class="nav flex-column h-100">
         <div class="head-text">
             <hr>
             <a class="nav-text dashboard " href="/">Dashboard</a>
@@ -25,6 +25,12 @@
             <ul class="nav-list">
                 <li class="train_logo mb-2"><a class="nav-text " href="/treinen">Treinen</a></li>
                 <li class="other-ov"><a class="nav-text " href="/overig-ov">Overig ov</a></li>
+            </ul>
+               <hr>
+            <ul>
+                <li>
+                    <a class="nav-text " href="/enquete">Enquete</a>
+                </li>
             </ul>
         </div>
     </nav>

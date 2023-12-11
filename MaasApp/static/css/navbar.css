@@ -1,11 +1,17 @@
+html, body {
+    height: 100%;
+}
 
-.container-fluid.maas-nav {
+
+.container-fluid .maas-nav {
+    min-height: 100vh;
     width: fit-content;
     display: flex;
     flex-direction: column;
     background: #5976A1;
     text-decoration: none;
     color: white;
+    align-items: stretch;
     padding: 1em;
 }
 
@@ -75,7 +81,6 @@
     background: url("../images/metro_icon.svg") no-repeat left center;
     background-size: contain;
 }
-
 
 
 .nav-text {

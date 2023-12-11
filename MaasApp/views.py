@@ -83,6 +83,9 @@ def trains(request):
 def busses(request):
     return render(request, './pages/other-ov.html')
 
+def enquete(request):
+    template = loader.get_template('./pages/enquete_answers.html')
+    return HttpResponse(template.render())
 
 def testing(request):
     template = loader.get_template('template.html')
