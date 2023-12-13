@@ -3,8 +3,8 @@ from django.db import models
 
 class EnqueteResponse(models.Model):
     respondent_id = models.IntegerField(primary_key=True)
-    start_time = models.DateTimeField()
-    completion_time = models.DateTimeField()
+    start_time = models.DateTimeField(null=True)
+    completion_time = models.DateTimeField(null=True)
     email = models.EmailField(blank=True, null=True)
     name = models.CharField(max_length=100, blank=True, null=True)
     last_modified_time = models.DateTimeField(blank=True, null=True)
@@ -23,4 +23,3 @@ class EnqueteResponse(models.Model):
 
     def __str__(self):
         return f"Response {self.respondent_id}"
-
