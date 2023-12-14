@@ -3,7 +3,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
 from .services.graph_generator_service import GraphGeneratorService
-from .models import User
+from .templatetags import custom_filters
+from .models import User, EnqueteResponse
 
 plt.switch_backend('Agg')
 
@@ -83,9 +84,14 @@ def trains(request):
 def busses(request):
     return render(request, './pages/other-ov.html')
 
+
 def enquete(request):
+    all_answers = EnqueteResponse.objects.all()
+    context = {
+        'all_answers': all_answers
+    }
     template = loader.get_template('./pages/enquete_answers.html')
-    return HttpResponse(template.render())
+    return HttpResponse(template.render(context,request))
 
 def testing(request):
     template = loader.get_template('template.html')
