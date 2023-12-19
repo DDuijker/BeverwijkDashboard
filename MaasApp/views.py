@@ -72,8 +72,22 @@ def cars(request):
 
 
 def scooters(request):
-    template = loader.get_template('./pages/scooters.html')
-    return HttpResponse(template.render())
+    # Sample data
+    categories = ['Beverwijk', 'Wijk aan Zee', 'Haarlem', 'Heemskerk']
+    values = [92.7, 6.5, 0.5, 0.3]
+
+    # Generate bar chart
+    bar_chart = GraphGeneratorService.generate_bar_chart(
+        categories, values, x_label="Gemeente", y_label="% ritten dat is gestart in de gemeente\nmaar eindigt in een andere gemeente", title="Ritten over de gemeentelijke grens"
+    )
+
+    # Pass the image data to the template
+    context = {
+        'graph': bar_chart,
+    }
+    return render(request, 'pages/scooters.html', context)
+    #template = loader.get_template('./pages/scooters.html')
+    #return HttpResponse(template.render())
 
 
 def trains(request):
