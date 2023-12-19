@@ -13,7 +13,8 @@ def index(request):
     """Loads the index page"""
 
     # Define your data for the categories and values
-    categories = ['Jan', 'Feb', 'Mrt', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt',  'Nov', 'Dec']  # Days of the week in Dutch
+    categories = ['Jan', 'Feb', 'Mrt', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov',
+                  'Dec']  # Days of the week in Dutch
     values = [120, 150, 180, 200, 230, 170, 190, 120, 40, 400, 430, 380]  # Example number of rides per day
 
     graph = GraphGeneratorService.make_line_graph(
@@ -78,7 +79,9 @@ def scooters(request):
 
     # Generate bar chart
     bar_chart = GraphGeneratorService.generate_bar_chart(
-        categories, values, x_label="Gemeente", y_label="% ritten dat is gestart in de gemeente\nmaar eindigt in een andere gemeente", title="Ritten over de gemeentelijke grens"
+        categories, values, x_label="Gemeente",
+        y_label="% ritten dat is gestart in de gemeente\nmaar eindigt in een andere gemeente",
+        title="Ritten over de gemeentelijke grens"
     )
 
     # Pass the image data to the template
@@ -86,8 +89,8 @@ def scooters(request):
         'graph': bar_chart,
     }
     return render(request, 'pages/scooters.html', context)
-    #template = loader.get_template('./pages/scooters.html')
-    #return HttpResponse(template.render())
+    # template = loader.get_template('./pages/scooters.html')
+    # return HttpResponse(template.render())
 
 
 def trains(request):
@@ -101,11 +104,28 @@ def busses(request):
 
 def enquete(request):
     all_answers = EnqueteResponse.objects.all()
+    satifaction = []
+
+    for answer in all_answers:
+        satisfaction_value = answer.satisfaction_transport_modes.strip()  # Remove leading/trailing whitespaces
+        if satisfaction_value:
+            try:
+                rating = int(float(satisfaction_value))
+                satifaction.append(rating)
+            except ValueError:
+                # Handle the case when the value is not a valid number
+                pass
+
+    avg_satisfaction = round((float(sum(satifaction) / len(satifaction)) if satifaction else 0.0), 2)
+
     context = {
-        'all_answers': all_answers
+        'all_answers': all_answers,
+        'avg_satisfaction': avg_satisfaction
     }
     template = loader.get_template('./pages/enquete_answers.html')
-    return HttpResponse(template.render(context,request))
+    return HttpResponse(template.render(context, request))
+
+
 
 def testing(request):
     template = loader.get_template('template.html')
