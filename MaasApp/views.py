@@ -86,8 +86,6 @@ def scooters(request):
         'graph': bar_chart,
     }
     return render(request, 'pages/scooters.html', context)
-    #template = loader.get_template('./pages/scooters.html')
-    #return HttpResponse(template.render())
 
 
 def trains(request):
