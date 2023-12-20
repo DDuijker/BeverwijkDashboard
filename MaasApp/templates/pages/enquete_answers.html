@@ -8,59 +8,64 @@ Enquete antwoorden
 {% block content %}
 <div class="container">
     <h4 class="text-secondary">Enquete antwoorden</h4>
-
     <div class="row">
-        <table class="table table-light table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Correspondent</th>
-                <th scope="col">Herkomst</th>
-                <th scope="col">Leeftijd</th>
-                <th scope="col">Frequentie reizen met verschillende vervoerwijzen</th>
-                <th scope="col">Bezit</th>
-                <th scope="col">Meest gebruikt</th>
-                <th scope="col">Gebruik MaaS</th>
-                <th scope="col">Frequentie MaaS</th>
-                <th scope="col">Kostoverzicht gewenst</th>
-                <th scope="col">Tevredenheid MaaS</th>
-                <th scope="col">Overweegt gebruik</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for answer in all_answers %}
+        <h4 class="text-secondary">Gemiddelde tevredenheid MaaS: {{ avg_satisfaction }}/5</h4>
+    </div>
+    <div class="row">
+        <div class="table-responsive">
 
-            <tr>
-                <th scope="row">{{ answer.respondent_id }}</th>
-                <td>{{ answer.origin }}</td>
-                <td>{{ answer.age }}</td>
-                <td>{{ answer.travel_frequency }}</td>
-                <td>
-                    {% for part in answer.available_transportation|color_code_parts %}
-                    <p style="color: {{ part.color }}">
-                        {% if part.part %}
-                        {{ part.number }}. {{ part.part }}
-                        {% endif %}
-                    </p>
-                    {% endfor %}
-                </td>
-                <td>
-                    {% for part in answer.most_used_transport_modes|color_code_parts %}
-                    <p style="color: {{ part.color }}">
-                        {% if part.part %}
-                        {{ part.number }}. {{ part.part }}
-                        {% endif %}
-                    </p>
-                    {% endfor %}
-                </td>
-                <td>{{ answer.maas_app_used }}</td>
-                <td>{{ answer.maas_usage_frequency }}</td>
-                <td>{{ answer.cost_overview_value_added }}</td>
-                <td>{{ answer.satisfaction_transport_modes }}/5</td>
-                <td>{{ answer.consider_shared_mobility }}</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+            <table class="table table-light table-condensed table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Correspondent</th>
+                    <th scope="col">Herkomst</th>
+                    <th scope="col">Leeftijd</th>
+                    <th scope="col">Frequentie reizen met verschillende vervoerwijzen</th>
+                    <th scope="col">Bezit</th>
+                    <th scope="col">Meest gebruikt</th>
+                    <th scope="col">Gebruik MaaS</th>
+                    <th scope="col">Frequentie MaaS</th>
+                    <th scope="col">Kostoverzicht gewenst</th>
+                    <th scope="col">Tevredenheid MaaS</th>
+                    <th scope="col">Overweegt gebruik</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for answer in all_answers %}
+
+                <tr>
+                    <th scope="row">{{ answer.respondent_id }}</th>
+                    <td>{{ answer.origin }}</td>
+                    <td>{{ answer.age }}</td>
+                    <td>{{ answer.travel_frequency }}</td>
+                    <td>
+                        {% for part in answer.available_transportation|color_code_parts %}
+                        <p style="color: {{ part.color }}">
+                            {% if part.part %}
+                            {{ part.number }}. {{ part.part }}
+                            {% endif %}
+                        </p>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for part in answer.most_used_transport_modes|color_code_parts %}
+                        <p style="color: {{ part.color }}">
+                            {% if part.part %}
+                            {{ part.number }}. {{ part.part }}
+                            {% endif %}
+                        </p>
+                        {% endfor %}
+                    </td>
+                    <td>{{ answer.maas_app_used }}</td>
+                    <td>{{ answer.maas_usage_frequency }}</td>
+                    <td>{{ answer.cost_overview_value_added }}</td>
+                    <td>{{ answer.satisfaction_transport_modes }}/5</td>
+                    <td>{{ answer.consider_shared_mobility }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </div>

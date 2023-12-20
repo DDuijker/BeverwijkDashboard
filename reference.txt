@@ -1,5 +1,5 @@
 Before you start:
-1. have python 3.11 installed
+1. have python 3.11 or 3.12 installed
 2. have django installed => pip install django
 3. have bootstrap5 installed => pip install django-bootstrap5
 4. have bootstrap-v5 installed => pip install django-bootstrap-v5
