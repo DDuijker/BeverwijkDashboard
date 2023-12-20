@@ -7,10 +7,20 @@ Enquete antwoorden
 
 {% block content %}
 <div class="container">
-    <h4 class="text-secondary">Enquete antwoorden</h4>
     <div class="row">
-        <h4 class="text-secondary">Gemiddelde tevredenheid MaaS: {{ avg_satisfaction }}/5</h4>
+        <div class="col">
+            <h4 class="text-secondary">Gemiddelde tevredenheid MaaS: {{ avg_satisfaction }}/5</h4>
+        </div>
+        <div class="col">
+            {% if circle_diagram %}
+            <img class="img-fluid" src="data:image/png;base64,{{ circle_diagram }}" alt="Line Graph">
+            {% else %}
+            <p>No graph data available.</p>
+            {% endif %}
+        </div>
+
     </div>
+    <h4 class="text-secondary">Enquete antwoorden</h4>
     <div class="row">
         <div class="table-responsive">
 
