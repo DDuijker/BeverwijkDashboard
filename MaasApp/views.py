@@ -5,7 +5,7 @@ from django.template import loader
 from .services.graph_generator_service import GraphGeneratorService
 from .templatetags import custom_filters
 from .models import User, EnqueteResponse
-
+from collections import Counter
 plt.switch_backend('Agg')
 
 
@@ -104,27 +104,49 @@ def busses(request):
 
 def enquete(request):
     all_answers = EnqueteResponse.objects.all()
-    satifaction = []
+    satisfaction = []
+    considered_maas_options = []
 
     for answer in all_answers:
-        satisfaction_value = answer.satisfaction_transport_modes.strip()  # Remove leading/trailing whitespaces
+        considered_maas_options.append(answer.consider_shared_mobility)
+        satisfaction_value = answer.satisfaction_transport_modes.strip()
         if satisfaction_value:
             try:
                 rating = int(float(satisfaction_value))
-                satifaction.append(rating)
+                satisfaction.append(rating)
             except ValueError:
-                # Handle the case when the value is not a valid number
                 pass
 
-    avg_satisfaction = round((float(sum(satifaction) / len(satifaction)) if satifaction else 0.0), 2)
+    avg_satisfaction = round((float(sum(satisfaction) / len(satisfaction)) if satisfaction else 0.0), 2)
+
+    # Count occurrences of each maas_option
+    maas_options_counts = Counter(considered_maas_options)
+
+    # Extract categories and values for the pie chart
+    maas_options = list(maas_options_counts.keys())
+    maas_options_counts = Counter(considered_maas_options)
+
+    # Remove Nvt from option counts
+    for key in list(maas_options_counts):
+        if key == 'Nvt':
+            del maas_options_counts[key]
+    print(maas_options_counts)
+
+    maas_options_values = [count for option, count in maas_options_counts.items() if option != 'Nvt']
+
+    circle_diagram = GraphGeneratorService.generate_pie_chart(
+        categories=maas_options_counts,
+        values=maas_options_values,
+        title="Meeste interesse in deelmobiliteit:"
+    )
 
     context = {
         'all_answers': all_answers,
-        'avg_satisfaction': avg_satisfaction
+        'avg_satisfaction': avg_satisfaction,
+        'circle_diagram': circle_diagram
     }
     template = loader.get_template('./pages/enquete_answers.html')
     return HttpResponse(template.render(context, request))
-
 
 
 def testing(request):
