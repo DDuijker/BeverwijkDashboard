@@ -13,6 +13,7 @@ from .templatetags import custom_filters
 from .models import User, EnqueteResponse
 from collections import Counter
 from .static.scooterData import scooter_data
+
 plt.switch_backend('Agg')
 
 
@@ -38,9 +39,21 @@ def index(request):
     circle_chart = GraphGeneratorService.generate_pie_chart(
         circle_categories, circle_values, "Verdeling vervoersmiddelen"
     )
+
+    bar_charts = []
+    for data_set in scooter_data:
+        chart = GraphGeneratorService.generate_bar_chart(
+            data_set['categories'], data_set['values'],
+            x_label=data_set['x_label'],
+            y_label=data_set['y_label'],
+            title=data_set['title']
+        )
+        bar_charts.append(chart)
+
     context = {
         'line_graph': graph,
-        'circle_chart': circle_chart
+        'circle_chart': circle_chart,
+        **{f'graph_{i + 1}': chart for i, chart in enumerate(bar_charts)}
     }
     template = loader.get_template('index.html')
     return HttpResponse(template.render(context, request))
@@ -80,7 +93,6 @@ def cars(request):
 
 
 def scooters(request):
-
     # Generate bar charts for all data sets
     bar_charts = []
     for data_set in scooter_data:
@@ -93,9 +105,14 @@ def scooters(request):
         bar_charts.append(chart)
 
     # Pass all image data to the template
-    context = {f'graph_{i + 1}': chart for i, chart in enumerate(bar_charts)}
+    context = {
 
-    return render(request, 'pages/scooters.html', context)
+        f'graph_{i + 1}': chart for i, chart in enumerate(bar_charts)
+
+    }
+
+    return render(request, './pages/scooters.html', context)
+
 
 def trains(request):
     template = loader.get_template('./pages/trains.html')

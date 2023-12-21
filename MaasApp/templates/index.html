@@ -5,7 +5,7 @@
 
 <div class="container text-secondary fw-semibold">
 
-  <div class="row">
+    <div class="row">
         <h3>Dashboard</h3>
     </div>
     <!--Overview percentage growth-->
@@ -15,7 +15,6 @@
         {% include "./components/percentage-growth.html" with name="Deelscooters" percentage=-15 image="../static/images/scooter_darker.svg" color="#739F6F"%}
         {% include "./components/percentage-growth.html" with name="Treinen" percentage=0 image="../static/images/train_dark.svg" color="#D9A134" %}
         {% include "./components/percentage-growth.html" with name="Overig ov" percentage=0 image="../static/images/metro_icon_dark.svg" color="#985F99" %}
-
     </div>
     <!--Grafieken-->
     <div class="row d-flex container column-gap-3 graph-overview">
@@ -41,5 +40,44 @@
         </div>
     </div>
 
+<!--scooter Grafieken -->
+<div class="col-sm-12 chart mt-4">
+    <div class="row header">Deelscooters</div>
+<div class="col-md-12 mt-3">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                {% include "components/scooter-graphs.html" with graph=graph_1 %}
+                {% include "components/scooter-graphs.html" with graph=graph_2 %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                {% include "components/scooter-graphs.html" with graph=graph_3 %}
+                {% include "components/scooter-graphs.html" with graph=graph_4 %}
+            </div>
+        </div>
+    </div>
 </div>
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                {% include "components/scooter-graphs.html" with graph=graph_5 %}
+                {% include "components/scooter-graphs.html" with graph=graph_6 %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                {% include "components/scooter-graphs.html" with graph=graph_7 %}
+                {% include "components/scooter-graphs.html" with graph=graph_8 %}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
 {% endblock %}

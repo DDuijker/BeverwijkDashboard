@@ -28,39 +28,24 @@ Deelscooters
 
     <div class="row">
         <!--  Bar charts  -->
-        <div class="col-md-12 col-lg-6">
-            <div class="row">
-                <div class="col-md-12 pb-3">
-                    <img src="data:image/png;base64,{{ graph_1|safe }}" alt="Graph 1" class="img-fluid rounded">
+                <div class="col-md-12 col-lg-6">
+                    <div class="row">
+                        {% include "components/scooter-graphs.html" with graph=graph_1 %}
+                        {% include "components/scooter-graphs.html" with graph=graph_2 %}
+                        {% include "components/scooter-graphs.html" with graph=graph_3 %}
+                        {% include "components/scooter-graphs.html" with graph=graph_4 %}
+                    </div>
                 </div>
-                <div class="col-md-12 pb-3">
-                    <img src="data:image/png;base64,{{ graph_2|safe }}" alt="Graph 2" class="img-fluid rounded">
-                </div>
-                <div class="col-md-12 pb-3">
-                    <img src="data:image/png;base64,{{ graph_3|safe }}" alt="Graph 3" class="img-fluid rounded">
-                </div>
-                <div class="col-md-12 pb-3">
-                    <img src="data:image/png;base64,{{ graph_4|safe }}" alt="Graph 4" class="img-fluid rounded">
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-12 col-lg-6">
-            <div class="row">
-                <div class="col-md-12 pb-3">
-                    <img src="data:image/png;base64,{{ graph_5|safe }}" alt="Graph 5" class="img-fluid rounded">
+                <div class="col-md-12 col-lg-6">
+                    <div class="row">
+                        {% include "components/scooter-graphs.html" with graph=graph_5 %}
+                        {% include "components/scooter-graphs.html" with graph=graph_6 %}
+                        {% include "components/scooter-graphs.html" with graph=graph_7 %}
+                        {% include "components/scooter-graphs.html" with graph=graph_8 %}
+                    </div>
                 </div>
-                <div class="col-md-12 pb-3">
-                    <img src="data:image/png;base64,{{ graph_6|safe }}" alt="Graph 6" class="img-fluid rounded">
-                </div>
-                <div class="col-md-12 pb-3">
-                    <img src="data:image/png;base64,{{ graph_7|safe }}" alt="Graph 7" class="img-fluid rounded">
-                </div>
-                <div class="col-md-12 pb-3">
-                    <img src="data:image/png;base64,{{ graph_8|safe }}" alt="Graph 8" class="img-fluid rounded">
-                </div>
-            </div>
-        </div>
+
 
         <div id="accordion">
             <!--KWARTAAL 2 TABEL-->
