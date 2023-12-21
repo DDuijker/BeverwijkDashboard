@@ -1,6 +1,8 @@
 from django.urls import path
 from django.views.generic import TemplateView
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -15,3 +17,5 @@ urlpatterns = [
     path('enquete/', views.enquete, name='enquete'),
     path('components/gismap/roadmap/roadmap/index.html', TemplateView.as_view(template_name='components/gismap/roadmap/roadmap/index.html'), name='roadmap_index')
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -2,16 +2,17 @@
 {% load static %}
 
 {% block title %}
-    Deelscooters
+Deelscooters
 {% endblock %}
 <link rel="stylesheet" href="{% static 'css/scooters.css' %}"/>
 {% block content %}
 <body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <h4 class="text-secondary">Evaluatie GO Sharing Beverwijk</h4>
-    <h5 class="text-secondary">Doel van de kwartaalevaluatie</h5>
+<div class="container">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <h4 class="text-secondary">Deelscooters Beverwijk: GO Sharing</h4>
+    <h5 class="text-secondary">Kwartaalevaluatie van GO Sharing in Beverwijk</h5>
     <p> GO Sharing verduurzaamt mobiliteit in steden en regio’s
         door het aanbieden van elektrische deelvoertuigen. De
         elektrische deelscooters en fietsen zijn voor iedereen
@@ -26,239 +27,250 @@
         toe.</p>
 
     <div class="row">
- <!--  Bar charts  -->
-       <div class="col-md-12 col-lg-6">
-        <div class="row">
-            <div class="col-md-12">
-                <img src="data:image/png;base64,{{ graph_1|safe }}" alt="Graph 1" class="img-fluid">
-            </div>
-            <div class="col-md-12">
-                <img src="data:image/png;base64,{{ graph_2|safe }}" alt="Graph 2" class="img-fluid">
-            </div>
-            <div class="col-md-12">
-                <img src="data:image/png;base64,{{ graph_3|safe }}" alt="Graph 3" class="img-fluid">
-            </div>
-            <div class="col-md-12">
-                <img src="data:image/png;base64,{{ graph_4|safe }}" alt="Graph 4" class="img-fluid">
+        <!--  Bar charts  -->
+        <div class="col-md-12 col-lg-6">
+            <div class="row">
+                <div class="col-md-12 pb-3">
+                    <img src="data:image/png;base64,{{ graph_1|safe }}" alt="Graph 1" class="img-fluid rounded">
+                </div>
+                <div class="col-md-12 pb-3">
+                    <img src="data:image/png;base64,{{ graph_2|safe }}" alt="Graph 2" class="img-fluid rounded">
+                </div>
+                <div class="col-md-12 pb-3">
+                    <img src="data:image/png;base64,{{ graph_3|safe }}" alt="Graph 3" class="img-fluid rounded">
+                </div>
+                <div class="col-md-12 pb-3">
+                    <img src="data:image/png;base64,{{ graph_4|safe }}" alt="Graph 4" class="img-fluid rounded">
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-md-12 col-lg-6">
-        <div class="row">
-            <div class="col-md-12">
-                <img src="data:image/png;base64,{{ graph_5|safe }}" alt="Graph 5" class="img-fluid">
-            </div>
-            <div class="col-md-12">
-                <img src="data:image/png;base64,{{ graph_6|safe }}" alt="Graph 6" class="img-fluid">
-            </div>
-             <div class="col-md-12">
-                <img src="data:image/png;base64,{{ graph_7|safe }}" alt="Graph 7" class="img-fluid">
-            </div>
-            <div class="col-md-12">
-                <img src="data:image/png;base64,{{ graph_8|safe }}" alt="Graph 8" class="img-fluid">
+        <div class="col-md-12 col-lg-6">
+            <div class="row">
+                <div class="col-md-12 pb-3">
+                    <img src="data:image/png;base64,{{ graph_5|safe }}" alt="Graph 5" class="img-fluid rounded">
+                </div>
+                <div class="col-md-12 pb-3">
+                    <img src="data:image/png;base64,{{ graph_6|safe }}" alt="Graph 6" class="img-fluid rounded">
+                </div>
+                <div class="col-md-12 pb-3">
+                    <img src="data:image/png;base64,{{ graph_7|safe }}" alt="Graph 7" class="img-fluid rounded">
+                </div>
+                <div class="col-md-12 pb-3">
+                    <img src="data:image/png;base64,{{ graph_8|safe }}" alt="Graph 8" class="img-fluid rounded">
+                </div>
             </div>
         </div>
-    </div>
 
         <div id="accordion">
-<!--KWARTAAL 2 TABEL-->
-        <div class="card">
-            <div class="card-header" id="headingQ2">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseQ2">
-                        Kwartaal 2
-                    </button>
-                </h5>
-            </div>
+            <!--KWARTAAL 2 TABEL-->
+            <div class="card mb-3">
+                <div class="card-header" id="headingQ2">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseQ2">
+                            Kwartaal 2
+                        </button>
+                    </h5>
+                </div>
 
-            <div class="card-body collapse" id="collapseQ2">
-               <table id="q2Table" class="table table-light table-striped" style="display: table;">
-                    <thead>
-                    <tr>
-                        <th scope="col">KPI - Evaluatiepunt</th>
-                        <th scope="col">Beschrijving</th>
-                        <th scope="col">Antwoord</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">Aantal voertuigen</th>
-                        <td>Gemiddeld aantal voertuigen dat in de gemeente staat.</td>
-                        <td>36</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Operationele voertuigen</th>
-                        <td>Het gemiddelde percentage operationele scooters van de totale vloot afgelopen kwartaal</td>
-                        <td>87,5%</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Aantal ritten</th>
-                        <td>Het totaal aantal ritten dat er in de gemeente is gemaakt</td>
-                        <td>
-                            April: 1.490 <br>
-                            Mei: 1.500 <br>
-                            Juni: 1.919 <br>
-                            Totaal: 4.900
-                        </td>
-                    </tr>
-                     <tr>
-                        <th scope="row">Gebruikersratio</th>
-                        <td>Gemiddeld gebruikersratio van de scooters. Gebaseerd op het aantal ritten per scooter per dag.</td>
-                        <td>
-                            April: 1.64 <br>
-                            Mei: 1.55 <br>
-                            Juni: 2.2 <br>
-                            Gemiddeld: 1.8
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Totaal aantal klanten</th>
-                        <td>Totaal aantal klanten dat volledig geregistreerd is</td>
-                        <td>3.820</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Nieuwe klanten</th>
-                        <td>Totaal aantal nieuwe registraties afgelopen kwartaal</td>
-                        <td>503</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Actieve gebruikers</th>
-                        <td>Klanten die een of meer ritten hebben gemaakt afgelopen kwartaal</td>
-                        <td>April: 517 <br>
-                            Mei: 489 <br>
-                            Juni: 609 <br>
-                        </td>
-                    </tr>
-                     <tr>
-                        <th scope="row">Overlastmeldingen</th>
-                        <td>Totaal aantal meldingen van overlast dat bij de klantenservice is binnengekomen</td>
-                        <td>49 klachten /4900 ritten *100%= 1,0% van alle ritten leidt tot een klacht</td>
-                     </tr>
-                    <tr>
-                        <th scope="row">Afhandelingstermijn meldingen</th>
-                        <td>De gemiddelde snelheid waarmee meldingen worden afgehandeld</td>
-                        <td>Gemiddelde afhandelingstijd van meldingen is 7 uur en altijd binnen 24 uur. Meldingen die voor 17:00 binnen komen worden dezelfde dag nog opgepakt</td>
-                     </tr>
-                    </tbody>
-                </table>
+                <div class="card-body collapse" id="collapseQ2">
+                    <table id="q2Table" class="table table-light table-striped" style="display: table;">
+                        <thead>
+                        <tr>
+                            <th scope="col">KPI - Evaluatiepunt</th>
+                            <th scope="col">Beschrijving</th>
+                            <th scope="col">Antwoord</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Aantal voertuigen</th>
+                            <td>Gemiddeld aantal voertuigen dat in de gemeente staat.</td>
+                            <td>36</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Operationele voertuigen</th>
+                            <td>Het gemiddelde percentage operationele scooters van de totale vloot afgelopen kwartaal
+                            </td>
+                            <td>87,5%</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Aantal ritten</th>
+                            <td>Het totaal aantal ritten dat er in de gemeente is gemaakt</td>
+                            <td>
+                                April: 1.490 <br>
+                                Mei: 1.500 <br>
+                                Juni: 1.919 <br>
+                                Totaal: 4.900
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gebruikersratio</th>
+                            <td>Gemiddeld gebruikersratio van de scooters. Gebaseerd op het aantal ritten per scooter
+                                per dag.
+                            </td>
+                            <td>
+                                April: 1.64 <br>
+                                Mei: 1.55 <br>
+                                Juni: 2.2 <br>
+                                Gemiddeld: 1.8
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Totaal aantal klanten</th>
+                            <td>Totaal aantal klanten dat volledig geregistreerd is</td>
+                            <td>3.820</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Nieuwe klanten</th>
+                            <td>Totaal aantal nieuwe registraties afgelopen kwartaal</td>
+                            <td>503</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Actieve gebruikers</th>
+                            <td>Klanten die een of meer ritten hebben gemaakt afgelopen kwartaal</td>
+                            <td>April: 517 <br>
+                                Mei: 489 <br>
+                                Juni: 609 <br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Overlastmeldingen</th>
+                            <td>Totaal aantal meldingen van overlast dat bij de klantenservice is binnengekomen</td>
+                            <td>49 klachten /4900 ritten *100%= 1,0% van alle ritten leidt tot een klacht</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Afhandelingstermijn meldingen</th>
+                            <td>De gemiddelde snelheid waarmee meldingen worden afgehandeld</td>
+                            <td>Gemiddelde afhandelingstijd van meldingen is 7 uur en altijd binnen 24 uur. Meldingen
+                                die voor 17:00 binnen komen worden dezelfde dag nog opgepakt
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--KWARTAAL 3 TABEL-->
+            <div class="card mb-2">
+                <div class="card-header" id="headingQ3">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseQ3">
+                            Kwartaal 3
+                        </button>
+                    </h5>
+                </div>
+
+                <div class="card-body collapse" id="collapseQ3">
+                    <table id="q3Table" class="table table-light table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">KPI - Evaluatiepunt</th>
+                            <th scope="col">Beschrijving</th>
+                            <th scope="col">Antwoord</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Aantal voertuigen</th>
+                            <td>Gemiddeld aantal voertuigen dat in de gemeente staat.</td>
+                            <td>37</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Operationele voertuigen</th>
+                            <td>Het gemiddelde percentage operationele scooters van de totale vloot afgelopen kwartaal
+                            </td>
+                            <td>84%</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Aantal ritten</th>
+                            <td>Het totaal aantal ritten dat er in de gemeente is gemaakt</td>
+                            <td>
+                                Juli: 1.582 <br>
+                                Augustus: 1.629 <br>
+                                September: 953 <br>
+                                Totaal: 4.164
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Aantal kilometers</th>
+                            <td>Totaal aantal gereden kilometers</td>
+                            <td>
+                                Juli: 6.996 <br>
+                                Augustus: 6.209 <br>
+                                September: 2.841 <br>
+                                Totaal: 16.046 KM
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gemiddelde afstand</th>
+                            <td>Gemiddelde afstand per rit in kilometers</td>
+                            <td>3.8 km</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gemiddelde ritduur</th>
+                            <td>Gemiddelde ritduur per rit in minuten</td>
+                            <td>11.2 minuten</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gebruikersratio</th>
+                            <td>Gemiddeld gebruikersratio van de scooters. Gebaseerd op het aantal ritten per scooter
+                                per dag.
+                            </td>
+                            <td>
+                                Juli: 2.0 <br>
+                                Augustus: 1.9 <br>
+                                September: 1.3 <br>
+                                Totaal: 1.7
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Totaal aantal klanten</th>
+                            <td>Totaal aantal klanten dat volledig geregistreerd is</td>
+                            <td>3.877</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Totaal aantal Nieuwe klanten</th>
+                            <td>Totaal aantal nieuwe registraties afgelopen kwartaal</td>
+                            <td>413</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Actieve gebruikers</th>
+                            <td>Totaal aantal nieuwe registraties afgelopen kwartaal</td>
+                            <td>Juli: 561 <br>
+                                Augustus: 544 <br>
+                                September: 359 <br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Overlastmeldingen</th>
+                            <td>Totaal aantal meldingen van overlast dat bij de klantenservice is binnengekomen</td>
+                            <td>49 klachten /totaal aantal ritten *100%= 1,5% van alle ritten leidt tot een klacht</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Afhandelingstermijn meldingen</th>
+                            <td>De gemiddelde snelheid waarmee meldingen worden afgehandeld</td>
+                            <td>Gemiddelde afhandelingstijd van meldingen is 6 uur en altijd binnen 24 uur. Meldingen
+                                die voor 17:00 binnen komen worden dezelfde dag nog opgepakt
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-<!--KWARTAAL 3 TABEL-->
-        <div class="card">
-            <div class="card-header" id="headingQ3">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseQ3">
-                        Kwartaal 3
-                    </button>
-                </h5>
-            </div>
 
-            <div class="card-body collapse" id="collapseQ3">
-                <table id="q3Table" class="table table-light table-striped">
-                    <thead>
-                    <tr>
-                        <th scope="col">KPI - Evaluatiepunt</th>
-                        <th scope="col">Beschrijving</th>
-                        <th scope="col">Antwoord</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">Aantal voertuigen</th>
-                        <td>Gemiddeld aantal voertuigen dat in de gemeente staat.</td>
-                        <td>37</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Operationele voertuigen</th>
-                        <td>Het gemiddelde percentage operationele scooters van de totale vloot afgelopen kwartaal</td>
-                        <td>84%</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Aantal ritten</th>
-                        <td>Het totaal aantal ritten dat er in de gemeente is gemaakt</td>
-                        <td>
-                            Juli: 1.582 <br>
-                            Augustus: 1.629 <br>
-                            September: 953 <br>
-                            Totaal: 4.164
-                        </td>
-                    </tr>
-                     <tr>
-                        <th scope="row">Aantal kilometers</th>
-                        <td>Totaal aantal gereden kilometers</td>
-                        <td>
-                            Juli: 6.996 <br>
-                            Augustus: 6.209 <br>
-                            September: 2.841 <br>
-                            Totaal: 16.046 KM
-                        </td>
-                    </tr>
-                     <tr>
-                        <th scope="row">Gemiddelde afstand</th>
-                        <td>Gemiddelde afstand per rit in kilometers</td>
-                        <td>3.8 km</td>
-                    </tr>
-                     <tr>
-                        <th scope="row">Gemiddelde ritduur</th>
-                        <td>Gemiddelde ritduur per rit in minuten</td>
-                        <td>11.2 minuten</td>
-                    </tr>
-                     <tr>
-                        <th scope="row">Gebruikersratio</th>
-                        <td>Gemiddeld gebruikersratio van de scooters. Gebaseerd op het aantal ritten per scooter per dag.</td>
-                        <td>
-                            Juli: 2.0 <br>
-                            Augustus: 1.9 <br>
-                            September: 1.3 <br>
-                            Totaal: 1.7
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Totaal aantal klanten</th>
-                        <td>Totaal aantal klanten dat volledig geregistreerd is</td>
-                        <td>3.877</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Totaal aantal Nieuwe klanten</th>
-                        <td>Totaal aantal nieuwe registraties afgelopen kwartaal</td>
-                        <td>413</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Actieve gebruikers</th>
-                        <td>Totaal aantal nieuwe registraties afgelopen kwartaal</td>
-                        <td>Juli: 561 <br>
-                            Augustus: 544 <br>
-                            September: 359 <br>
-                        </td>
-                    </tr>
-                     <tr>
-                        <th scope="row">Overlastmeldingen</th>
-                        <td>Totaal aantal meldingen van overlast dat bij de klantenservice is binnengekomen</td>
-                        <td>49 klachten /totaal aantal ritten *100%= 1,5% van alle ritten leidt tot een klacht</td>
-                     </tr>
-                    <tr>
-                        <th scope="row">Afhandelingstermijn meldingen</th>
-                        <td>De gemiddelde snelheid waarmee meldingen worden afgehandeld</td>
-                        <td>Gemiddelde afhandelingstijd van meldingen is 6 uur en altijd binnen 24 uur. Meldingen die voor 17:00 binnen komen worden dezelfde dag nog opgepakt</td>
-                     </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-            <div class="col-md-12 col-lg-6">
-        <div class="row">
-            <div class="col-md-6 col-lg-12">
+        <div class="row ">
+            <div class="col">
                 <h5>Heatmap van de startpunten</h5>
-                <img src="../../static/images/Q2startpuntenHeatmap.png" class="img-fluid">
+                <img src="../../static/images/Q2startpuntenHeatmap.png" class="img-fluid rounded">
             </div>
-            <div class="col-md-6 col-lg-12">
+            <div class="col">
                 <h5>Heatmap van de eindpunten</h5>
-                <img src="../../static/images/Q2eindpuntenHeatmap.png" class="img-fluid">
+                <img src="../../static/images/Q2eindpuntenHeatmap.png" class="img-fluid rounded">
             </div>
         </div>
+
     </div>
-    </div>
+</div>
 </body>
 {% endblock  %}

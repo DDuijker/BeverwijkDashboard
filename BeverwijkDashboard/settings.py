@@ -121,7 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'  # Fix the STATIC_URL
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'MaasApp/static/'), os.path.join(BASE_DIR, '../MaasApp/templates/components/gismap/roadmap/roadmap'),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'MaasApp/static/'), os.path.join(BASE_DIR, '../MaasApp/templates/components/gismap/roadmap/roadmap'),BASE_DIR / "static",]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 

@@ -6,8 +6,9 @@
                 <h3>{{percentage}}%
                     {% if percentage > 0 %}
                     <img class=" img-fluid" src="../../static/images/arrow_up.svg" alt="arrow up"/>
-                    {% else %}
+                    {% elif percentage < 0 %}
                     <img class="img-fluid" src="../../static/images/arrow_down.svg" alt="arrow down"/>
+                    {% else %}
                     {% endif %}
                 </h3>
             </div>

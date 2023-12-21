@@ -1,3 +1,7 @@
+.background-navbar{
+    background-color: #5976A1;
+}
+
 .maas-overview {
     column-gap: 3em;
     row-gap: 3em;
@@ -53,3 +57,4 @@
     background: #f0f0f0;
     margin-bottom: 1em;
 }
+
