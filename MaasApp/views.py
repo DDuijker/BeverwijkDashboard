@@ -149,7 +149,7 @@ def enquete(request):
 
     data_dict = {}
 
-    for line in input_data:  # Replace 'your_data' with the actual variable containing your data
+    for line in input_data:
         modes_and_percentages = [mode.strip() for mode in line.strip(';').split(';')]
 
         for index, mode in enumerate(modes_and_percentages):
@@ -160,26 +160,29 @@ def enquete(request):
             # Accumulate rankings (in reverse order, so the most used gets the highest ranking)
             data_dict[mode] += len(modes_and_percentages) - index
 
-    # Sort the dictionary by values (total rankings) in descending order
-    sorted_data_dict = dict(sorted(data_dict.items(), key=lambda item: item[1], reverse=True))
+    # Calculate the total count of all rankings
+    total_rankings = sum(data_dict.values())
 
-    # Calculate y_ticks based on the range from the lowest to the highest value
-    min_value = min(sorted_data_dict.values())
-    max_value = max(sorted_data_dict.values())
-    y_ticks = list(range(50, max_value + 10, 25))
+    # Convert rankings to percentages
+    percentage_data_dict = {mode: (count / total_rankings) * 100 for mode, count in data_dict.items()}
 
-    # remove the parentheses from the keys
-    keys = []
-    for key in list(sorted_data_dict.keys()):
-        keys.append(GenerateColorService.remove_words_in_parentheses(key))
+    # Sort the dictionary by values (total percentages) in descending order
+    sorted_percentage_data_dict = dict(sorted(percentage_data_dict.items(), key=lambda item: item[1], reverse=True))
+
+    # Calculate y_ticks based on the range from the lowest to the highest percentage
+    max_percentage = int(max(sorted_percentage_data_dict.values()))
+    y_ticks = list(range(0, max_percentage + 10, 5))
+
+    # Remove the parentheses from the keys
+    keys = [GenerateColorService.remove_words_in_parentheses(key) for key in sorted_percentage_data_dict.keys()]
 
     chart_data = GraphGeneratorService.generate_bar_chart(
         categories=keys,
-        values=list(sorted_data_dict.values()),
+        values=list(sorted_percentage_data_dict.values()),
         x_label="Vervoerswijzen",
-        y_label="Totaal gebruik",
+        y_label="Totaal gebruik (%)",
         title="Meest gebruikte vervoerswijzen",
-        y_ticks= y_ticks,
+        y_ticks=y_ticks,
         grid=True,
         grid_alpha=0.5,
         size=(12, 5),
