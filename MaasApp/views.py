@@ -115,6 +115,7 @@ def enquete(request):
                 rating = int(float(satisfaction_value))
                 satisfaction.append(rating)
             except ValueError:
+                # Handle the case when the value is not a valid number
                 pass
 
     avg_satisfaction = round((float(sum(satisfaction) / len(satisfaction)) if satisfaction else 0.0), 2)
@@ -147,6 +148,7 @@ def enquete(request):
     }
     template = loader.get_template('./pages/enquete_answers.html')
     return HttpResponse(template.render(context, request))
+
 
 
 def testing(request):
