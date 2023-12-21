@@ -13,6 +13,7 @@ class ChartStyler:
         plt.ylabel(y_label, fontsize=12, color='#696A8F')
         plt.title(title, fontsize=14, color='#696A8F')
 
+
         if grid:
             plt.grid(axis='y', linestyle='--', alpha=grid_alpha)
 
@@ -30,6 +31,14 @@ class ChartStyler:
         return img_data if img_data else None
 
 
+def change_background_color(plot, color):
+    if color is None:
+        color = '#F0F0F0'
+        plot.figure(facecolor=color)
+    else:
+        plot.figure(facecolor=color)
+
+
 # Service class for generating charts
 class GraphGeneratorService(ChartStyler):
     @staticmethod
@@ -38,6 +47,7 @@ class GraphGeneratorService(ChartStyler):
             grid = plt.get_current_fig_manager()
         elif grid_alpha is None:
             grid_alpha = 0.3
+        change_background_color(plt, '#F0F0F0')
         plt.plot(x_values, y_values, color="blue")
         ChartStyler.style_chart(x_label, y_label, title, y_ticks, grid, grid_alpha)
         return ChartStyler.save_and_encode_plot()
@@ -46,7 +56,7 @@ class GraphGeneratorService(ChartStyler):
     def generate_bar_chart(categories, values, special_bars=None, x_label=None, y_label=None, title=None,
                            y_ticks=None, grid=True, grid_alpha=0.5):
         # Set the background color
-        plt.figure(facecolor='#F8F8F8')
+        plt.figure(facecolor='#F0F0F0')
 
         # Use a colormap to generate colors dynamically
         colors = plt.cm.viridis(np.linspace(0, 1, len(categories)))
@@ -69,6 +79,7 @@ class GraphGeneratorService(ChartStyler):
     @staticmethod
     def generate_pie_chart(categories, values, title):
         plt.figure(figsize=(8, 8))
+        change_background_color(plt, color='#F0F0F0')
         plt.pie(values, labels=categories, autopct='%1.1f%%', startangle=140)
         plt.title(title)
         plt.axis('equal')  # Ensure pie chart is a circle
