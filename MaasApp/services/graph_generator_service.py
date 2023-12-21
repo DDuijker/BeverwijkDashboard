@@ -54,10 +54,15 @@ class GraphGeneratorService(ChartStyler):
 
     @staticmethod
     def generate_bar_chart(categories, values, special_bars=None, x_label=None, y_label=None, title=None,
-                           y_ticks=None, grid=True, grid_alpha=0.5):
+                           y_ticks=None, grid=True, grid_alpha=0.5, size=None, color=None):
+        background_color = '#F0F0F0'
+        if color:
+            background_color=color
         # Set the background color
-        plt.figure(facecolor='#F0F0F0')
+        plt.figure(facecolor=background_color)
 
+        if size and type(size) == tuple:
+            plt.figure(figsize=size, facecolor=background_color)
         # Use a colormap to generate colors dynamically
         colors = plt.cm.viridis(np.linspace(0, 1, len(categories)))
 

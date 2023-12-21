@@ -2,10 +2,13 @@ import matplotlib.pyplot as plt
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
+
+from .services.generate_color_service import GenerateColorService
 from .services.graph_generator_service import GraphGeneratorService
 from .templatetags import custom_filters
 from .models import User, EnqueteResponse
 from collections import Counter
+
 plt.switch_backend('Agg')
 
 
@@ -106,10 +109,12 @@ def enquete(request):
     all_answers = EnqueteResponse.objects.all()
     satisfaction = []
     considered_maas_options = []
+    input_data = []
 
     for answer in all_answers:
         considered_maas_options.append(answer.consider_shared_mobility)
         satisfaction_value = answer.satisfaction_transport_modes.strip()
+        input_data.append(answer.most_used_transport_modes)
         if satisfaction_value:
             try:
                 rating = int(float(satisfaction_value))
@@ -141,14 +146,53 @@ def enquete(request):
         title="Meeste interesse in deelmobiliteit:"
     )
 
+    data_dict = {}
+
+    for line in input_data:  # Replace 'your_data' with the actual variable containing your data
+        modes_and_percentages = [mode.strip() for mode in line.strip(';').split(';')]
+
+        for index, mode in enumerate(modes_and_percentages):
+            # Create a dictionary entry for each mode
+            if mode not in data_dict:
+                data_dict[mode] = 0
+
+            # Accumulate rankings (in reverse order, so the most used gets the highest ranking)
+            data_dict[mode] += len(modes_and_percentages) - index
+
+    # Sort the dictionary by values (total rankings) in descending order
+    sorted_data_dict = dict(sorted(data_dict.items(), key=lambda item: item[1], reverse=True))
+
+    # Calculate y_ticks based on the range from the lowest to the highest value
+    min_value = min(sorted_data_dict.values())
+    max_value = max(sorted_data_dict.values())
+    y_ticks = list(range(50, max_value + 10, 25))
+
+    # remove the parentheses from the keys
+    keys = []
+    for key in list(sorted_data_dict.keys()):
+        keys.append(GenerateColorService.remove_words_in_parentheses(key))
+
+    chart_data = GraphGeneratorService.generate_bar_chart(
+        categories=keys,
+        values=list(sorted_data_dict.values()),
+        x_label="Vervoerswijzen",
+        y_label="Totaal gebruik",
+        title="Meest gebruikte vervoerswijzen",
+        y_ticks= y_ticks,
+        grid=True,
+        grid_alpha=0.5,
+        size=(12, 5),
+        color='#F0F0F0'
+    )
+
     context = {
         'all_answers': all_answers,
         'avg_satisfaction': avg_satisfaction,
-        'circle_diagram': circle_diagram
+        'circle_diagram': circle_diagram,
+        'chart_data': chart_data
     }
     template = loader.get_template('./pages/enquete_answers.html')
     return HttpResponse(template.render(context, request))
-
 
 
 def testing(request):

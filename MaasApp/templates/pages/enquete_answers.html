@@ -7,22 +7,34 @@ Enquete antwoorden
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <h4 class="text-secondary">Gemiddelde tevredenheid MaaS: {{ avg_satisfaction }}/5</h4>
+    <div class="row m-2  pb-5">
+        <div class="col-sm-12 col-lg-6 rounded p-2" style="background-color: #f0f0f0">
+            <div class="row p-3">
+                <div class="rounded">
+                    <h2 class="">Enquete grafieken</h2>
+                </div>
+                <h4 class="text-secondary">Gemiddelde tevredenheid MaaS: {{ avg_satisfaction }}/5</h4>
+            </div>
+            <div class="row rounded">
+                {% if chart_data %}
+                <img class="img-fluid rounded" src="data:image/png;base64,{{ chart_data }}" alt="Chart Data">
+                {% else %}
+                <p>No graph data available.</p>
+                {% endif %}
+            </div>
         </div>
-        <div class="col">
+        <div class="col-sm-12 col-lg-6 p-2 rounded" style="background-color: #f0f0f0">
             {% if circle_diagram %}
-            <img class="img-fluid" src="data:image/png;base64,{{ circle_diagram }}" alt="Line Graph">
+            <img class="img-fluid rounded" src="data:image/png;base64,{{ circle_diagram }}" alt="Circle Diagram">
             {% else %}
             <p>No graph data available.</p>
             {% endif %}
         </div>
 
     </div>
-    <h4 class="text-secondary">Enquete antwoorden</h4>
+    <h4 class="text-secondary p-3">Enquete antwoorden</h4>
     <div class="row">
-        <div class="table-responsive">
+        <div class="table-responsive rounded">
 
             <table class="table table-light table-condensed table-striped">
                 <thead>

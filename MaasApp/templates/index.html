@@ -21,19 +21,19 @@
     <div class="row d-flex container column-gap-3 graph-overview">
         <div class="col-sm-12 col-md-6 col-xl-7 chart ">
             <div class="row header">Grafiek</div>
-            <div class="row graph-content">
+            <div class="row graph-content m-1 rounded">
                 {% if line_graph %}
-                <img class="img-fluid" src="data:image/png;base64,{{ line_graph }}" alt="Line Graph">
+                <img class="img-fluid rounded" src="data:image/png;base64,{{ line_graph }}" alt="Line Graph">
                 {% else %}
                 <p>No graph data available.</p>
                 {% endif %}
             </div>
         </div>
         <div class="col-sm-12 col-md-5 col-xl-4 chart ">
-            <div class="row header">Cirkeldiagram</div>
-            <div class="row">
+            <div class="row header rounded">Cirkeldiagram</div>
+            <div class="row rounded">
                 {% if line_graph %}
-                <img class="img-fluid" src="data:image/png;base64,{{ circle_chart }}" alt="Cirle Chart">
+                <img class="img-fluid rounded" src="data:image/png;base64,{{ circle_chart }}" alt="Cirle Chart">
                 {% else %}
                 <p>No graph data available.</p>
                 {% endif %}
