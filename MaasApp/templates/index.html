@@ -2,14 +2,15 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
-<div class="container text-secondary fw-semibold">
+<div class="container text-secondary fw-semibold  animate__animated animate__fadeIn">
 
     <div class="row">
         <h3>Dashboard</h3>
     </div>
     <!--Overview percentage growth-->
-    <div class="row container maas-overview ">
+    <div class="row container maas-overview">
         {% include "./components/percentage-growth.html" with name="Deelfietsen" percentage=0 image="../static/images/bike_darker.svg" color="#696A8F" %}
         {% include "./components/percentage-growth.html" with name="Deelauto's" percentage=0 image="../static/images/car_darker.svg" color="#BD6E6E" %}
         {% include "./components/percentage-growth.html" with name="Deelscooters" percentage=-15 image="../static/images/scooter_darker.svg" color="#739F6F"%}
@@ -21,8 +22,8 @@
     <!--Grafieken-->
     <div class="row d-flex container column-gap-3 graph-overview">
         <div class="col-sm-12 col-md-6 col-xl-7 chart ">
-            <div class="row header">Maas gebruik</div>
-            <div class="row graph-content m-1 rounded">
+            <div class="row header ms-1 mt-1">Maas gebruik</div>
+            <div class="row graph-content m-3 rounded">
                 {% if line_graph %}
                 <img class="img-fluid rounded" src="data:image/png;base64,{{ line_graph }}" alt="Line Graph">
                 {% else %}
@@ -31,8 +32,8 @@
             </div>
         </div>
         <div class="col-sm-12 col-md-5 col-xl-4 chart rounded">
-            <div class="row header rounded">Verdeling vervoersmiddelen</div>
-            <div class="row rounded">
+            <div class="row header ms-1 mt-1">Verdeling vervoersmiddelen</div>
+            <div class="row rounded m-3">
                 {% if line_graph %}
                 <img class="img-fluid rounded" src="data:image/png;base64,{{ circle_chart }}" alt="Cirle Chart">
                 {% else %}

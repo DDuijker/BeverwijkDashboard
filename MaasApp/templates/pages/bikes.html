@@ -5,6 +5,7 @@ Deelfietsen
 {% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
 <!-- Display the graph -->
 <div class="container">
@@ -13,7 +14,7 @@ Deelfietsen
         <h4 class="text-secondary">Deelfietsen</h4>
     </div>
 
-    <div class="row">
+    <div class="row animate__animated animate__fadeIn">
         <!--  Bar chart  -->
         <div class="col-md-12 col-lg-6">
             <img src="data:image/png;base64,{{ graph }}" alt="Graph" class="img-fluid rounded">
