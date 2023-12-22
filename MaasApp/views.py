@@ -10,7 +10,7 @@ from django.templatetags.static import static
 from .services.generate_color_service import GenerateColorService
 from .services.graph_generator_service import GraphGeneratorService
 from .templatetags import custom_filters
-from .models import User, EnqueteResponse
+from .models import User, EnqueteResponse, Vehicle
 from collections import Counter
 from .static.scooterData import scooter_data
 
@@ -40,7 +40,7 @@ def index(request):
         circle_categories, circle_values, "Verdeling vervoersmiddelen"
     )
 
-    # --------------------SCOOTER GRAFIEKEN----------------------------
+    # --------------------SCOOTER GRAPHS----------------------------
     bar_charts = []
     for data_set in scooter_data:
         chart = GraphGeneratorService.generate_bar_chart(
@@ -51,7 +51,7 @@ def index(request):
         )
         bar_charts.append(chart)
 
-    # ------------------------ENQUETE GRAFIEKEN-----------------------------
+    # ------------------------ENQUETE GRAPH-----------------------------
     all_answers = EnqueteResponse.objects.all()
     satisfaction = []
     considered_maas_options = []
@@ -165,9 +165,13 @@ def bikes(request):
         categories, values, x_label="Dag", y_label="Ritten", title="Ritten per dag"
     )
 
+    # Get all the bike data from vehicles
+    all_bikes = Vehicle.objects.filter(type=0)
+
     # Pass the image data to the template
     context = {
         'graph': bar_chart,
+        'all_bikes': all_bikes
     }
 
     return render(request, 'pages/bikes.html', context)
