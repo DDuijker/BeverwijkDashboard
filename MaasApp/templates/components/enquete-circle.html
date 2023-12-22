@@ -1,0 +1,7 @@
+<div class="rounded" style="background-color: #f0f0f0">
+            {% if circle_diagram %}
+            <img class="img-fluid rounded" src="data:image/png;base64,{{ circle_diagram }}" alt="Circle Diagram">
+            {% else %}
+            <p>No graph data available.</p>
+            {% endif %}
+</div>

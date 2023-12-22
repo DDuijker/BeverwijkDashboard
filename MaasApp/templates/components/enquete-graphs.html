@@ -1,0 +1,7 @@
+<div class="row rounded">
+                {% if chart_data %}
+                <img class="img-fluid rounded pb-5" src="data:image/png;base64,{{ chart_data }}" alt="Chart Data">
+                {% else %}
+                <p>No graph data available.</p>
+                {% endif %}
+            </div>
