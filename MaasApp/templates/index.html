@@ -39,81 +39,103 @@
                 {% else %}
                 <p>No graph data available.</p>
                 {% endif %}
+
+                <p class="mb-1 mt-2 fw-bold">Maas Doelen</p>
+                <div class="mb-2">
+                    <p class="mb-1">Fiets</p>
+                    <div class="progress">
+                        <div class="progress-bar bg-warning rounded" role="progressbar" style="width: 28.1%;"
+                             aria-valuenow="28.1"
+                             aria-valuemin="0" aria-valuemax="100">
+                            <span class="text-white">28.1%</span>
+                        </div>
+                    <p class="text-secondary fw-light ms-1">Goal: 40%</p>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <p class="mb-1">Auto</p>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary rounded" role="progressbar" style="width: 31.2%;"
+                             aria-valuenow="31.2"
+                             aria-valuemin="0" aria-valuemax="100">
+                            <span class="text-white">31.2%</span>
+                        </div>
+                        <p class="text-secondary fw-light ms-1">Goal: 20%</p>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <p class="mb-1">Scooter</p>
+                    <div class="progress">
+                        <div class="progress-bar bg-success rounded" role="progressbar" style="width: 1.6%;"
+                             aria-valuenow="1.6"
+                             aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                         <span class="text-black">1.6%</span>
+                        <p class="text-secondary fw-light ms-1">Goal: 10%</p>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <p class="mb-1">Treinen</p>
+                    <div class="progress">
+                        <div class="progress-bar bg-danger rounded" role="progressbar" style="width: 23.4%;"
+                             aria-valuenow="23.4"
+                             aria-valuemin="0" aria-valuemax="100">
+                            <span class="text-white">23.4%</span>
+                        </div>
+                        <p class="text-secondary fw-light ms-1">Goal: 50%</p>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <p class="mb-1">Overig OV</p>
+                    <div class="progress">
+                        <div class="progress-bar bg-purple rounded" role="progressbar" style="width: 15.6%;"
+                             aria-valuenow="15.6"
+                             aria-valuemin="0" aria-valuemax="100">
+                            <span class="text-white">15.6%</span>
+                        </div>
+                        <p class="text-secondary fw-light ms-1">Goal: 20%</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-    <!-- grafieken enquete-->
-    <div class="col-sm-12 chart mt-4">
-        <div class="row header">Enquete</div>
-        <div class="col-md-12 mt-3">
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- Enquete Graph -->
-                    <div class="col-sm-12 rounded ms-3" style="background-color: #f0f0f0">
-                        <div class="row p-3">
-                            <h4 class="text-secondary">Gemiddelde tevredenheid huidig aantal beschikbare
-                                vervoersmiddelen: {{ avg_satisfaction }}/5</h4>
-                        </div>
-                        <div class="row rounded">
-                            {% if chart_data %}
-                            {% include 'components/enquete-graphs.html' with chart_data=chart_data %}
-                            {% else %}
-                            <p>No graph data available.</p>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-6">
-                    <!-- Enquete Circle Diagram -->
-                    <div class="col-sm-12 p-2 rounded me-1" style="background-color: #f0f0f0">
-                        <div class="me-3">
-                            {% if circle_diagram %}
-                            {% include 'components/enquete-circle.html' with circle_diagram=circle_diagram %}
-                            {% else %}
-                            <p>No graph data available.</p>
-                            {% endif %}
-                        </div>
+<!-- grafieken enquete-->
+<div class="col-sm-12 chart mt-5 mb-5">
+    <div class="row header  ms-1 mt-1">Enquete</div>
+    <div class="col-md-12 mt-3">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Enquete Graph -->
+                <div class="col-sm-12 rounded ms-3 mb-3" style="background-color: #f0f0f0">
+                    <div class="row p-3">
+                        <h4 class="text-secondary">Gemiddelde tevredenheid huidig aantal beschikbare
+                            vervoersmiddelen: {{ avg_satisfaction }}/5</h4>
+                    </div>
+                    <div class="row rounded">
+                        {% if chart_data %}
+                        {% include 'components/enquete-graphs.html' with chart_data=chart_data %}
+                        {% else %}
+                        <p>No graph data available.</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-
-    <!--scooter Grafieken -->
-    <div class="col-sm-12 chart mt-4">
-        <div class="row header">Deelscooters</div>
-        <div class="col-md-12 mt-3">
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="row">
-                        {% include "components/scooter-graphs.html" with graph=graph_1 %}
-                        {% include "components/scooter-graphs.html" with graph=graph_2 %}
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        {% include "components/scooter-graphs.html" with graph=graph_3 %}
-                        {% include "components/scooter-graphs.html" with graph=graph_4 %}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="row">
-                        {% include "components/scooter-graphs.html" with graph=graph_5 %}
-                        {% include "components/scooter-graphs.html" with graph=graph_6 %}
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        {% include "components/scooter-graphs.html" with graph=graph_7 %}
-                        {% include "components/scooter-graphs.html" with graph=graph_8 %}
+            <div class="col-md-5 ms-5">
+                <!-- Enquete Circle Diagram -->
+                <div class="col-sm-12 p-2 rounded ms-4" style="background-color: #f0f0f0">
+                    <div>
+                        {% if circle_diagram %}
+                        {% include 'components/enquete-circle.html' with circle_diagram=circle_diagram %}
+                        {% else %}
+                        <p>No graph data available.</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -121,4 +143,45 @@
     </div>
 </div>
 
+
+<!--scooter Grafieken -->
+<div class="col-sm-12 chart mt-4 me-3">
+    <div class="row header  ms-2 mt-1">Deelscooters</div>
+    <div class="col-md-12 mt-3">
+
+        <div class="row ms-3">
+            <div class="col-md-6">
+                <div class="row">
+                    {% include "components/scooter-graphs.html" with graph=graph_1 %}
+                    {% include "components/scooter-graphs.html" with graph=graph_2 %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    {% include "components/scooter-graphs.html" with graph=graph_3 %}
+                    {% include "components/scooter-graphs.html" with graph=graph_4 %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="row ms-3">
+            <div class="col-md-6">
+                <div class="row">
+                    {% include "components/scooter-graphs.html" with graph=graph_5 %}
+                    {% include "components/scooter-graphs.html" with graph=graph_6 %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    {% include "components/scooter-graphs.html" with graph=graph_7 %}
+                    {% include "components/scooter-graphs.html" with graph=graph_8 %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
 {% endblock %}

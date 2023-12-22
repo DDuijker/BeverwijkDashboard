@@ -133,6 +133,8 @@ def index(request):
         size=(12, 5),
         color='#F0F0F0'
     )
+
+
     context = {
         'line_graph': graph,
         'circle_chart': circle_chart,
