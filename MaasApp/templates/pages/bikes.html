@@ -5,90 +5,52 @@ Deelfietsen
 {% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
 <!-- Display the graph -->
 <div class="container">
-    <div class="container-fluid">
-        <div class="row">
-            <h4 class="text-secondary">Deelfietsen</h4>
-        </div>
+<div class="container-fluid">
+    <div class="row">
+        <h4 class="text-secondary">Deelfietsen</h4>
+    </div>
 
-        <!-- Row with Graph and Table -->
-        <div class="row my-4 rounded" style="background-color: #F8F8F8;">
-            <!-- Bar chart -->
-            <div class="col-md-12 col-lg-6 bg-light p-3 mb-3">
-                <h5 class="ps-3">Ritten per dag met Deelfietsen</h5>
-                <img src="data:image/png;base64,{{ graph }}" alt="Graph" class="img-fluid rounded">
-            </div>
-            <!-- Comparison with Heemskerk -->
-            <div class="col-md-12 col-lg-6 bg-light rounded p-3">
-                <table class="table table-light table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Indicator</th>
-                            <th scope="col">Beverwijk</th>
-                            <th scope="col">Heemskerk</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Aantal Bewoners</th>
-                            <td>42.711</td>
-                            <td>39.431</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Ondergrondse fietsenstalling</th>
-                            <td>Ja</td>
-                            <td>Nee</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Ovfiets capaciteit</th>
-                            <td>93</td>
-                            <td>9</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <div class="row animate__animated animate__fadeIn">
+        <!--  Bar chart  -->
+        <div class="col-md-12 col-lg-6">
+            <img src="data:image/png;base64,{{ graph }}" alt="Graph" class="img-fluid rounded">
         </div>
-
-        <!-- Row with Bikes Table -->
-        <div class="row my-3">
-            <div class="col p-0">
-                <div class="table-responsive rounded">
-                    <table class="table table-light table-condensed table-striped">
-                        <!-- Table Header -->
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Model</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Info</th>
-                                <th scope="col">Conditie</th>
-                                <th scope="col">Laadniveau</th>
-                                <th scope="col">Aankoopdatum</th>
-                            </tr>
-                        </thead>
-                        <!-- Table Body -->
-                        <tbody>
-                            {% for bike in all_bikes %}
-                            <tr>
-                                <th scope="row">{{ bike.vehicle_id }}</th>
-                                <td>{{ bike.model }}</td>
-                                <td>{{ bike.status.label }}</td>
-                                <td>{{ bike.info }}</td>
-                                <td>{{ bike.condition.label }}</td>
-                                <td>{{ bike.charging_level }}</td>
-                                <td>{{ bike.date_of_purchase }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <!-- Comparison with heemskerk-->
+        <div class="col-md-12 col-lg-6">
+            <table class="table table-light table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Indicator</th>
+                    <th scope="col">Beverwijk</th>
+                    <th scope="col">Heemskerk</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Aantal Bewoners</th>
+                    <td>42.711</td>
+                    <td>39.431</td>
+                </tr>
+                <tr>
+                    <th scope="row">Ondergrondse fietsenstalling</th>
+                    <td>Ja</td>
+                    <td>Nee</td>
+                </tr>
+                <tr>
+                    <th scope="row">Ovfiets capaciteit</th>
+                    <td>93</td>
+                    <td>9</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+    </div>
 </div>
-
 
 
 {% endblock  %}
